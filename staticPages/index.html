@@ -1,32 +1,151 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="wodth=device-width, initial-scale=1">
     <title>QuizzedIn</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styling.css">
-</head>
+    <link href="styling.css" rel="stylesheet" type="text/css" />
+    <style>
+      .nav {
+        height: 70px;
+        border-bottom: 1px solid black;
+        display: flex;
+        align-items: center;
+        background: rgba(0,0,0,.03);
+      }
+      .nav-right-items {
+        display: flex;
+        margin-left: auto;
+      }
+      .company-name {
+        margin-left: 20px;
+      }
+      .nav-item {
+        margin-left: 10px;
+      }
+      .title {
+        text-align: center;
+        font-size: 3.5rem;
+        font-weight: bold;
+      }
+      .subtitle {
+        margin-top: 100px;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 300;
+      }
+      .main {
+        width: 1000px;
+        margin: 0 auto;
+        margin-top: 60px;
+      }
+      .sub-nav {
+        display: flex;
+        margin-top: 100px;
+      }
+      .sub-nav-item {
+        width: 300px;
+        height: 350px;
+        border: 1px solid black;
+        margin: 20px;
+        border-radius: 4px;
+      }
+      .sub-nav-item-title {
+        font-size: 1.5rem;
+        background: rgba(0,0,0,.03);
+        text-align: center;
+        height: 53px;
+        line-height: 53px;
+        border-bottom: 1px solid black;
+      }
+      .sub-nav-item-detail {
+        font-size: 1.0rem;
+        padding: 15px;
+      }
+      .sub-nav-item-button {
+        padding: .5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+        border-radius: .3rem;
+        color: white;
+        background-color: #007bff;
+        background-image: none;
+        border-color: #007bff;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="company-name">
+        QuizzedIn
+      </div>
+      <div class="nav-right-items">
+        <div class="nav-item">Category</div>
+        <div class="nav-item">Search</div>
+        <div class="nav-item">SignIn</div>
+        <div class="nav-item">SignUp</div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="title">
+        Welcome to QuizzedIn
+      </div>
+      <div class="subtitle">
+        You can study for yourself with various topics that you are interested in and want to study by yourself with our excellent provided quizzes.
+        In addition, you can easily create quizzes about the topics you want to study or test on your own,
+        save them on the web, and share them with your friends.
+        Various topics are already available. Get started!!!
+      </div>
+      <div class="sub-nav">
+        <div class="sub-nav-item">
+          <div class="sub-nav-item-title">
+            Look Up Categories
+          </div>
+          <div class="sub-nav-item-detail">
+            detail information of this section will be here.
+          </div>
+          <button class="sub-nav-item-button">
+            Go to Category
+          </button>
+        </div>
+        <div class="sub-nav-item">
+          <div class="sub-nav-item-title">
+            Look Up Categories
+          </div>
+          <div class="sub-nav-item-detail">
+            detail information of this section will be here.
+          </div>
+          <div class="sub-nav-item-detail">
+            detail information of this section will be here.
+          </div>
+          <div class="sub-nav-item-detail">
+            detail information of this section will be here.
+          </div>
+          <button class="sub-nav-item-button">
+            Go to Category
+          </button>
+        </div>
+        <div class="sub-nav-item">
+          <div class="sub-nav-item-title">
+            Look Up Categories
+          </div>
+          <div class="sub-nav-item-detail">
+            detail information of this section will be here.
+          </div>
+          <div class="sub-nav-item-detail">
+            detail information of this section will be here.
+          </div>
+          <div class="sub-nav-item-detail">
+            detail information of this section will be here.
+          </div>
+          <button class="sub-nav-item-button">
+            Go to Category
+          </button>
+        </div>
+      </div>
+    </div>
 
-<body>
-    <nav>
-        <h3 style="float: left;"><a href="index.html">QuizzedIn</a></h3>
-        <ul style="float: left;">
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="create.html">Create</a></li>
-            <li>Search</li>
-        </ul>
-        <ul>
-            <li><a href="signIn.html">Sign In</a></li>
-            <li><a href="signUp.html">Sign Up</a></li>
-        </ul><br>
-    </nav>
-    <main>
-        <h1>Welcome to QuizzedIn!</h1>
-        <h3>This is our application that will allow anyone to study, quiz, and 
-            test their knowledge of many different subjects.</h3>
-    </main>
-
-
-
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
