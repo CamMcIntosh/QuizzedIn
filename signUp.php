@@ -18,8 +18,7 @@
         <input type="email" name="email"><br>
         Password:<br>
         <input type="password" name="password"><br>
-        Confirm Password:<br>
-        <input type="password" name="confirmPassword"><br>
+        
         <input type="submit" value="Submit">
         <input type="reset" value="Reset">
     </form>
