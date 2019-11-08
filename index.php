@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>QuizzedIn</html>
+    <title>QuizzedIn</title>
     
 </head>
 
