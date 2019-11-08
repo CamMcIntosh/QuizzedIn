@@ -10,10 +10,10 @@ if (!empty($name)) {
         if (!empty($email)) {
             if (!empty($password)) { //if none of the fields are empty
                 //database info
-                $host = "localhost:3306";
-                $dbusername = "root";
-                $dbpassword = "UnderPressure301";
-                $dbname = "QuizzedIn";
+                $host = "localhost";
+                $dbusername = "id11205838_db";
+                $dbpassword = "database";
+                $dbname = "id11205838_quizzedin";
 
                 //Create connection
                 $connect = new mysqli ($host, $dbusername, $dbpassword, $dbname);
