@@ -14,6 +14,6 @@
     <ul style="list-style-type: none;">
         <div id="topics"></div> <!-- Categories automatically uploaded via API-->
     </ul>
-    
+    </main>
 </body>
 </html>
