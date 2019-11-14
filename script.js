@@ -3,7 +3,7 @@ $(document).ready(function() {
         type: "get",
         url: "https://opentdb.com/api_category.php",
         beforeSend: function() {
-            $("#team").html("Loading...");
+            $("#topics").html("Loading...");
         },
         timeout: 10000,
         error: function(xhr, status, error) {
@@ -11,10 +11,10 @@ $(document).ready(function() {
         },
         dataType: "json",
         success: function(data) {
-            $("#team").html("");
+            $("#topics").html("");
             $.each(data, function() {
                 $.each(this, function(key, value) {
-                    $("#team").append(
+                    $("#topics").append(
                         value.name + "<br>"
                     );
                 });
