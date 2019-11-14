@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-
-    </head>
-
     <?php
         include('login.php'); // Includes Login Script
         if(isset($_SESSION['login_user'])) {
             header("location: profile.php"); // Redirecting To Profile Page
         }
     ?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
 
     <body>
         <h2>Sign In</h2>
