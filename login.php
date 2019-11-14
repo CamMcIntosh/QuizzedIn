@@ -23,7 +23,7 @@
             //fetching the contents of the row
             if ($stmt->fetch())  {
                 $_SESSION['login_user'] = $email; // Initializing Session
-                //header("location: profile.php"); // Redirecting To Profile Page
+                header("location: profile.php"); // Redirecting To Profile Page
             }
             mysqli_close($conn); // Closing Connection
         }
