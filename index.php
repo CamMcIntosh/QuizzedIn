@@ -2,22 +2,22 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="wodth=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>QuizzedIn</title>
-    <link href="/staticPages/styling.css" rel="stylesheet" type="text/css" />
+    <link href="/QuizzedIn/staticPages/styling.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
       <header>
         <div class="nav">
           <div class="company-name">
-            <a class="company-name-link" href="/index.php" style="text-decoration:none"><span>QuizzedIn</span></a>
+            <a class="company-name-link" href="/QuizzedIn/index.php" style="text-decoration:none"><span>QuizzedIn</span></a>
           </div>
           <div class="nav-left-items">
             <div class="nav-item">
-              <a class="nav-item-link" href="/categories.php" style="text-decoration:none"><span>Category</span></a>
+              <a class="nav-item-link" href="/QuizzedIn/categories.php" style="text-decoration:none"><span>Category</span></a>
             </div>
               <div class="nav-item">
-                <a class="nav-item-link" href="/" style="text-decoration:none" onclick="showDiv()">
+                <a class="nav-item-link" href="/QuizzedIn/" style="text-decoration:none" onclick="showDiv()">
                     <span>Search</span>
                 </a>
               </div>
@@ -32,11 +32,11 @@
             </div>
             <div class="nav-right-items">
               <div class="nav-item">
-                <a class="nav-item-link open-button" href="/signIn.php" style="text-decoration:none"><span>SignIn</span></a>
+                <a class="nav-item-link open-button" href="/QuizzedIn/signIn.php" style="text-decoration:none"><span>SignIn</span></a>
 
               </div>
               <div class="nav-item">
-                <a class="nav-item-link open-button" href="/signUp.php" style="text-decoration:none"><span>SignUp</span></a>
+                <a class="nav-item-link open-button" href="/QuizzedIn/signUp.php" style="text-decoration:none"><span>SignUp</span></a>
               </div>
             </div>
           </div>
@@ -66,7 +66,7 @@
             Study for yourself with quizzes and share with others.
           </div>
           <button class="sub-nav-item-button">
-              <a class="sub-item-link" href="/signUp.php" style="text-decoration:none"><span>Sign Up</span></a>
+              <a class="sub-item-link" href="/QuizzedIn/signUp.php" style="text-decoration:none"><span>Sign Up</span></a>
           </button>
         </div>
         <div class="sub-nav-item">
@@ -80,7 +80,7 @@
             Study your knowledge of new topics.
           </div>
           <button class="sub-nav-item-button">
-            <a class="sub-item-link" href="/categories.php" style="text-decoration:none"><span>Go to Category</span></a>
+            <a class="sub-item-link" href="/QuizzedIn/categories.php" style="text-decoration:none"><span>Go to Category</span></a>
           </button>
         </div>
         <div class="sub-nav-item">
@@ -94,12 +94,14 @@
             Create your own quizzes and share quizzes with your teammates.
           </div>
           <button class="sub-nav-item-button">
-            <a class="sub-item-link" href="/create.php" style="text-decoration:none"><span>Create Quiz</span></a>
+            <a class="sub-item-link" href="/QuizzedIn/create.php" style="text-decoration:none"><span>Create Quiz</span></a>
           </button>
         </div>
       </div>
     </div>
-
+    <footer>
+      <p>Company © QuizzedIn. All rights reserved.</p>
+    </footer>
 
 </body>
 
