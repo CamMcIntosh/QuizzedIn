@@ -36,7 +36,6 @@
     font-weight: bold;
     font-size: 1.5rem;
 }
-/*need to modify left and right-items-link*/
 
 .nav-item {
   margin-left: 40px;
@@ -141,7 +140,7 @@ footer {
 .form-popup {
   display: none;
   position: fixed;
-  top: 25px;
+  top: 55px;
   right: 15px;
   border: 3px solid #f1f1f1;
   z-index: 9;

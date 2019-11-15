@@ -32,18 +32,24 @@
       </div>
       <div class="nav-right-items">
         <div class="nav-item">
-          <a class="nav-item-link open-button" onclick="openForm()" style="text-decoration:none"><span>SignIn</span></a>
+          <a class="nav-item-link open-button" onclick="openSignInForm()" style="text-decoration:none"><span>SignIn</span></a>
 
         </div>
         <div class="nav-item">
-          <a class="nav-item-link" href="/" style="text-decoration:none"><span>SignUp</span></a>
+          <a class="nav-item-link open-button" onclick="openSignUpForm()" style="text-decoration:none"><span>SignUp</span></a>
         </div>
       </div>
     </div>
     <div class="main">
-      <div class="form-popup" id="myForm">
+      <div class="form-popup" id="signUpForm">
         <form action="/action_page.php" class="form-container">
-          <h1>Login</h1>
+          <h1>Sign Up</h1>
+
+          <label for="name"><b>Name</b></label>
+          <input type="text" placeholder="Enter Name" name="email" required>
+
+          <label for="username"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="email" required>
 
           <label for="email"><b>Email</b></label>
           <input type="text" placeholder="Enter Email" name="email" required>
@@ -51,8 +57,26 @@
           <label for="psw"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="psw" required>
 
-          <button type="submit" class="btn">Login</button>
-          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      	<label for="pswcf"><b>Password Confirm</b></label>
+          <input type="password" placeholder="Confirm Password" name="pswcf" required>
+
+          <button type="submit" class="btn">Sign Up</button>
+          <button type="button" class="btn cancel" onclick="closeSignUpForm()">Close</button>
+        </form>
+      </div>
+
+      <div class="form-popup" id="signInForm" >
+        <form action="/action_page.php" class="form-container">
+          <h1>Sign In</h1>
+
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+
+          <button type="submit" class="btn">Sign In</button>
+          <button type="button" class="btn cancel" onclick="closeSignInForm()">Close</button>
         </form>
       </div>
     <!--Cam's code start-->
@@ -75,12 +99,21 @@
     <!--Cam's code end-->
   </div>
   <script type="text/javascript">
-    function openForm() {
-      document.getElementById("myForm").style.display = "block";
-    }
-    function closeForm() {
-      document.getElementById("myForm").style.display = "none";
-    }
+  function openSignInForm() {
+    document.getElementById("signInForm").style.display = "block";
+    closeSignUpForm();
+  }
+  function closeSignInForm() {
+    document.getElementById("signInForm").style.display = "none";
+  }
+  function openSignUpForm() {
+    document.getElementById("signUpForm").style.display = "block";
+    closeSignInForm();
+  }
+  function closeSignUpForm() {
+    document.getElementById("signUpForm").style.display = "none";
+  }
+
   </script>
 
   <footer>
