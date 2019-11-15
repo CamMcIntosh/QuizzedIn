@@ -3,7 +3,8 @@
     <head>
         <title>QuizzedIn</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styling.css">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styling.css" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="script.js"></script>
     </head>
@@ -11,19 +12,78 @@
 
 
 <body>
-    <nav>
-        <h3 style="float: left;"><a href="index.html">QuizzedIn</a></h3>
-        <ul style="float: left;">
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="create.html">Create</a></li>
-            <li>Search</li>
-        </ul>
-        <ul>
-            <li><a href="signIn.html">Sign In</a></li>
-            <li><a href="signUp.html">Sign Up</a></li>
-        </ul><br>
-    </nav>
-    <main>
+  <div class="nav">
+    <div class="company-name">
+      <a class="company-name-link" href="/" style="text-decoration:none"><span>QuizzedIn</span></a>
+    </div>
+    <div class="nav-left-items">
+      <div class="nav-item">
+        <a class="nav-item-link" href="/" style="text-decoration:none"><span>Category</span></a>
+      </div>
+        <div class="nav-item">
+          <a class="nav-item-link" href="/" style="text-decoration:none" onclick="showDiv()">
+              <span>Search</span>
+          </a>
+        </div>
+      </div>
+      <div id="toggle" class="nav-center-items" style="display:none">
+          <div class="nav-searchbar">
+            <form class="example" action="action_page.php">
+              <input type="text" placeholder="Search.." name="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+      </div>
+      <div class="nav-right-items">
+        <div class="nav-item">
+          <a class="nav-item-link open-button" onclick="openSignInForm()" style="text-decoration:none"><span>SignIn</span></a>
+
+        </div>
+        <div class="nav-item">
+          <a class="nav-item-link open-button" onclick="openSignUpForm()" style="text-decoration:none"><span>SignUp</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="form-popup" id="signUpForm">
+        <form action="/action_page.php" class="form-container">
+          <h1>Sign Up</h1>
+
+          <label for="name"><b>Name</b></label>
+          <input type="text" placeholder="Enter Name" name="email" required>
+
+          <label for="username"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="email" required>
+
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+
+      	<label for="pswcf"><b>Password Confirm</b></label>
+          <input type="password" placeholder="Confirm Password" name="pswcf" required>
+
+          <button type="submit" class="btn">Sign Up</button>
+          <button type="button" class="btn cancel" onclick="closeSignUpForm()">Close</button>
+        </form>
+      </div>
+
+      <div class="form-popup" id="signInForm" >
+        <form action="/action_page.php" class="form-container">
+          <h1>Sign In</h1>
+
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+
+          <button type="submit" class="btn">Sign In</button>
+          <button type="button" class="btn cancel" onclick="closeSignInForm()">Close</button>
+        </form>
+      </div>
+    <!--Cam's code start-->
     <h1>Categories</h1>
     <ul style="list-style-type: none;">
         <div id="topics"></div> <!-- Categories automatically uploaded via API-->
@@ -52,13 +112,29 @@
         <li>Anime & Manga</li>
         <li>Cartoon & Animations</li>-->
     </ul>
-    </main>
+    <!--Cam's code end-->
 
+  </div>
+  <script type="text/javascript">
+  function openSignInForm() {
+    document.getElementById("signInForm").style.display = "block";
+    closeSignUpForm();
+  }
+  function closeSignInForm() {
+    document.getElementById("signInForm").style.display = "none";
+  }
+  function openSignUpForm() {
+    document.getElementById("signUpForm").style.display = "block";
+    closeSignInForm();
+  }
+  function closeSignUpForm() {
+    document.getElementById("signUpForm").style.display = "none";
+  }
 
+  </script>
 
-
-
-
+  <footer>
+    <p>Company © QuizzedIn. All rights reserved.</p>
+  </footer>
 </body>
-
 </html>
