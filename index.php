@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>QuizzedIn</title>
-    <link href="/QuizzedIn/staticPages/styling.css" rel="stylesheet" />
+    <link href="./styling.css" rel="stylesheet" />
   </head>
   <body>
       <header>
@@ -41,7 +41,7 @@
             </div>
           </div>
           <div class="main">
-            
+
       <div class="title">
         Welcome to QuizzedIn
       </div>
