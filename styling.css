@@ -1,28 +1,229 @@
-body {
-    background-color: aliceblue;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    max-width: 100%;
-    max-height: 100%;
-    text-align: center;
+.nav {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background: rgba(169,208,245,0.95);
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  left: 0;
+  right: 0;
+  width: 100%; /* Full width */
+}
+.nav-left-items {
+  display: flex;
+  margin-right: auto;
+  margin-left: 45px;
+}
+.nav-right-items {
+  display: flex;
+  margin-left: auto;
+  margin-right: 50px;
+}
+.company-name {
+  margin-left: 45px;
+  font-weight: bold;
+}
+.company-name-link{
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.company-name-link:hover{
+    margin-left: 10px;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
-nav {
-    width: 100%;
-    background-color: aqua;
+.nav-item {
+  margin-left: 40px;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.nav-item-link{
+    color: black;
+    font-size: 1.2rem;
 }
 
-nav ul li {
-    
+.nav-item-link:hover{
+    color: whitesmoke;
+    font-size: 1.2rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+.subtitle {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+.main {
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+.main .title {
+    margin-top: 150px;
+}
+.sub-nav {
+  display: flex;
+  margin-top: 100px;
+}
+.sub-nav-item {
+  width: 300px;
+  height: 350px;
+  border: 1px solid black;
+  margin: 20px;
+  border-radius: 4px;
+}
+.sub-nav-item-title {
+  font-size: 1.5rem;
+  background: rgba(0,0,0,.03);
+  text-align: center;
+  height: 53px;
+  line-height: 53px;
+  border-bottom: 1px solid black;
+}
+.sub-nav-item-detail {
+  font-size: 1.0rem;
+  padding: 15px;
+}
+.sub-nav-item-button {
+  padding: .5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: .3rem;
+  color: white;
+  background-color: #007bff;
+  background-image: none;
+  border-color: #007bff;
+  margin: 30px 80px 0px 80px;
+}
+.sub-nav-item-button:hover {
+  padding: .5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: .3rem;
+  color: #007bff;
+  background-color: whitesmoke;
+  background-image: none;
+  border-color: whitesmoke;
+  margin: 30px 80px 0px 80px;
+}
+.sub-item-link {
     color: white;
-    padding: 14px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-  
+}
+.sub-item-link:hover {
+    color: #007bff;
+}
+
+footer {
+    font-size: 0.8rem;
+    margin-top: 150px;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    padding: 10px 20px;
+    background: #666;
+    color: white;
+}
+/* for LogIn popup-Test*/
+/* Button used to open the contact form - fixed at the bottom of the page */
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 55px;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+/*Under here is for SearchBar for later*/
+* {
+  box-sizing: border-box;
+}
+
+/* Style the search field */
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
 }
