@@ -41,7 +41,7 @@
             </div>
           </div>
     <main>
-    <form action="index.php">
+    <form action="./index.php">
         Name your Quiz:<br>
         <input type="text" name="name"><br>
         Choose a Category: <br>
