@@ -46,16 +46,16 @@
                 <h1>Sign Up</h1>
 
                 <label for="name"><b>Name</b></label>
-                <input type="text" placeholder="Enter Name" name="email" required>
+                <input type="text" placeholder="Enter Name" name="name" required>
 
                 <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="email" required>
+                <input type="text" placeholder="Enter Username" name="username" required>
 
                 <label for="email"><b>Email</b></label>
                 <input type="text" placeholder="Enter Email" name="email" required>
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="password" placeholder="Enter Password" name="password" required>
 
             	<label for="pswcf"><b>Password Confirm</b></label>
                 <input type="password" placeholder="Confirm Password" name="pswcf" required>
