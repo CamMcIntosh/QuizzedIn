@@ -42,7 +42,7 @@
           </div>
           <div class="main">
             <div class="form-popup" id="signUpForm">
-              <form action="/action_page.php" method="post" class="form-container">
+              <form action="./connect.php" method="post" class="form-container">
                 <h1>Sign Up</h1>
 
                 <label for="name"><b>Name</b></label>
