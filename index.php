@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>QuizzedIn</title>
-    <link href="./styling.css" rel="stylesheet" />
+    <link href="styling.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
       <header>
         <div class="nav">
           <div class="company-name">
-            <a class="company-name-link" href="./index.php" style="text-decoration:none"><span>QuizzedIn</span></a>
+            <a class="company-name-link" href="/" style="text-decoration:none"><span>QuizzedIn</span></a>
           </div>
           <div class="nav-left-items">
             <div class="nav-item">
               <a class="nav-item-link" href="./categories.php" style="text-decoration:none"><span>Category</span></a>
             </div>
               <div class="nav-item">
-                <a class="nav-item-link" href="./" style="text-decoration:none" onclick="showDiv()">
+                <a class="nav-item-link" href="/" style="text-decoration:none" onclick="showDiv()">
                     <span>Search</span>
                 </a>
               </div>
@@ -32,16 +32,53 @@
             </div>
             <div class="nav-right-items">
               <div class="nav-item">
-                <a class="nav-item-link open-button" href="./signIn.php" style="text-decoration:none"><span>SignIn</span></a>
+                <a class="nav-item-link open-button" onclick="openSignInForm()" style="text-decoration:none"><span>SignIn</span></a>
 
               </div>
               <div class="nav-item">
-                <a class="nav-item-link open-button" href="./signUp.php" style="text-decoration:none"><span>SignUp</span></a>
+                <a class="nav-item-link open-button" onclick="openSignUpForm()" style="text-decoration:none"><span>SignUp</span></a>
               </div>
             </div>
           </div>
           <div class="main">
+            <div class="form-popup" id="signUpForm">
+              <form action="/action_page.php" class="form-container">
+                <h1>Sign Up</h1>
 
+                <label for="name"><b>Name</b></label>
+                <input type="text" placeholder="Enter Name" name="email" required>
+
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="email" required>
+
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+            	<label for="pswcf"><b>Password Confirm</b></label>
+                <input type="password" placeholder="Confirm Password" name="pswcf" required>
+
+                <button type="submit" class="btn" href="/">Sign Up</button>
+                <button type="button" class="btn cancel" onclick="closeSignUpForm()">Close</button>
+              </form>
+            </div>
+
+            <div class="form-popup" id="signInForm" >
+              <form action="/action_page.php" class="form-container">
+                <h1>Sign In</h1>
+
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <button type="submit" class="btn"><a class="signInSubmit" href="./temp_signedIn.php" style="text-decoration:none">Sign In</a></button>
+                <button type="button" class="btn cancel" onclick="closeSignInForm()">Close</button>
+              </form>
+            </div>
       <div class="title">
         Welcome to QuizzedIn
       </div>
@@ -99,10 +136,36 @@
         </div>
       </div>
     </div>
+
+    <script src="script.js"></script>
+      <!--JavaScript for Search-->
+    <script type="text/javascript">
+        function showDiv(){
+            if (document.getElementById(toggle).style.display=="none") {
+                document.getElementById(toggle).style.display = "block";
+            } else if(document.getElementById(toggle).style.display == "block") {
+                document.getElementById(toggle).style.display = "none";
+            }
+        }
+
+        function openSignInForm() {
+          document.getElementById("signInForm").style.display = "block";
+          closeSignUpForm();
+        }
+        function closeSignInForm() {
+          document.getElementById("signInForm").style.display = "none";
+        }
+        function openSignUpForm() {
+          document.getElementById("signUpForm").style.display = "block";
+          closeSignInForm();
+        }
+        function closeSignUpForm() {
+          document.getElementById("signUpForm").style.display = "none";
+        }
+    </script>
+
     <footer>
       <p>Company © QuizzedIn. All rights reserved.</p>
     </footer>
-
-</body>
-
+  </body>
 </html>
