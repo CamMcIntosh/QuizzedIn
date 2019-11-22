@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>QuizzedIn</title>
     <link href="./styling.css" rel="stylesheet" />
+    <script src="functions.js"></script>
   </head>
   <body>
       <header>
@@ -41,6 +42,7 @@
             </div>
           </div>
     <main>
+    <script id="answerTemplate" type="text/html"></script>
     <form action="./index.php">
         Name your Quiz:<br>
         <input type="text" name="name"><br>
@@ -48,38 +50,21 @@
         <input type="text" name="category"><br><br><br>
         Type of Question:<br>
         <input type="radio" onclick="addAnswers(3)" name="question" value="multiple" checked> Multiple Choice<br>
-        <input type="radio" onclick="addAnswers(0)" name="question" value="trueFalse" checked> True/False<br>
-        <input type="radio" onclick="addAnswers(1)" name="question" value="fillIn" checked> Fill In The Blank<br>
+        <input type="radio" onclick="addAnswers(0)" name="question" value="trueFalse"> True/False<br>
+        <input type="radio" onclick="addAnswers(1)" name="question" value="fillIn"> Fill In The Blank<br>
         <br>Question 1: <input type="text" name="q1"><br>
         <br>Correct Answer: <input type="text" name="a1"><br>
         <div id="wrongAnswers"></div>
+        <script>
+          addAnswers(3);
+        </script>
         <!-- Code for this still needs to be completed -->
 
         <br><input type="submit" value="Submit">
 
 
-        <script>
-          function addAnswers (n) {
-            var myNode = document.getElementById("wrongAnswers");
-            while (myNode.firstChild) {
-              myNode.removeChild(myNode.firstChild);
-            }
-            for (var i = 1; i <= n; i++) {
-              var div = document.createElement("div");
-              div.innerHTML = document.getElementById("answerTemplate").innerHTML;
-              var answerNumText = document.createElement("pre");
-              var answerInput = document.createElement("input");
-              answerNumText.innerHTML = "Wrong Answer "+i+": ";
-              answerInput.setAttribute("name", "a"+(i+1)); answerInput.setAttribute("type", "text");
-              div.appendChild(answerNumText); div.appendChild(answerInput);
-              document.getElementById("wrongAnswers").appendChild(div);
-            }
-          }
-        </script>
 
-        <script id="answerTemplate" type="text/html"></script>
     </form>
     </main>
-
 </body>
 </html>
