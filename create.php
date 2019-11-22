@@ -47,15 +47,37 @@
         Choose a Category: <br>
         <input type="text" name="category"><br><br><br>
         Type of Question:<br>
-        <input type="radio" name="question" value="multiple" checked> Multiple Choice<br>
-        <input type="radio" name="question" value="trueFalse" checked> True/False<br>
-        <input type="radio" name="question" value="fillIn" checked> Fill In The Blank<br>
-        Question 1:<br>
-        <input type="text" name="q1"><br>
+        <input type="radio" onclick="addAnswers(3)" name="question" value="multiple" checked> Multiple Choice<br>
+        <input type="radio" onclick="addAnswers(0)" name="question" value="trueFalse" checked> True/False<br>
+        <input type="radio" onclick="addAnswers(1)" name="question" value="fillIn" checked> Fill In The Blank<br>
+        <br>Question 1: <input type="text" name="q1"><br>
+        <br>Correct Answer: <input type="text" name="a1"><br>
+        <div id="wrongAnswers"></div>
         <!-- Code for this still needs to be completed -->
 
-        <input type="submit" value="Submit">
+        <br><input type="submit" value="Submit">
 
+
+        <script>
+          function addAnswers (n) {
+            var myNode = document.getElementById("wrongAnswers");
+            while (myNode.firstChild) {
+              myNode.removeChild(myNode.firstChild);
+            }
+            for (var i = 1; i <= n; i++) {
+              var div = document.createElement("div");
+              div.innerHTML = document.getElementById("answerTemplate").innerHTML;
+              var answerNumText = document.createElement("pre");
+              var answerInput = document.createElement("input");
+              answerNumText.innerHTML = "Wrong Answer "+i+": ";
+              answerInput.setAttribute("name", "a"+(i+1)); answerInput.setAttribute("type", "text");
+              div.appendChild(answerNumText); div.appendChild(answerInput);
+              document.getElementById("wrongAnswers").appendChild(div);
+            }
+          }
+        </script>
+
+        <script id="answerTemplate" type="text/html"></script>
     </form>
     </main>
 
