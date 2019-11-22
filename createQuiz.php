@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php require './templates.php'; ?>
 <html>
 <head>
     <meta charset="utf-8">
@@ -48,23 +49,14 @@
         <input type="text" name="name"><br>
         Choose a Category: <br>
         <input type="text" name="category"><br><br><br>
-        Type of Question:<br>
-        <input type="radio" onclick="addAnswers(3)" name="question" value="multiple" checked> Multiple Choice<br>
-        <input type="radio" onclick="addTrueFalse()" name="question" value="trueFalse"> True/False<br>
-        <input type="radio" onclick="addAnswers(0)" name="question" value="fillIn"> Fill In The Blank<br><br>
-        Question 1: <input type="text" name="q1"><br><br>
-        <div id="correctAnswer"></div>
-        <div id="wrongAnswers"></div>
-        <script>
-          addAnswers(3);
-        </script>
-        <!-- Code for this still needs to be completed -->
+
+        <!-- Printing the from from the templates.php file -->
+        <?php printAddQuestionForm(); ?>
 
         <br><input type="submit" value="Submit">
-
-
-
     </form>
+    <!-- Code for this still needs to be completed -->
+    <!-- We need to add code somewhere to pull the data out of the form -->
     </main>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<<?php require './templates.php'; ?>
+<?php require './templates.php'; ?>
 <html>
   <head>
     <meta charset="utf-8">
@@ -9,7 +9,7 @@
   </head>
   <body>
       <header>
-          <<?php printNavBar(); ?>
+          <?php printNavBar(); ?>
           <div class="main">
             <div class="form-popup" id="signUpForm">
               <form action="./connect.php" method="post" class="form-container">
@@ -101,7 +101,7 @@
             Create your own quizzes and share quizzes with your teammates.
           </div>
           <button class="sub-nav-item-button">
-            <a class="sub-item-link" href="./create.php" style="text-decoration:none"><span>Create Quiz</span></a>
+            <a class="sub-item-link" href="./createQuiz.php" style="text-decoration:none"><span>Create Quiz</span></a>
           </button>
         </div>
       </div>
