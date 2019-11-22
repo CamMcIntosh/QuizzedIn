@@ -50,10 +50,10 @@
         <input type="text" name="category"><br><br><br>
         Type of Question:<br>
         <input type="radio" onclick="addAnswers(3)" name="question" value="multiple" checked> Multiple Choice<br>
-        <input type="radio" onclick="addAnswers(0)" name="question" value="trueFalse"> True/False<br>
-        <input type="radio" onclick="addAnswers(1)" name="question" value="fillIn"> Fill In The Blank<br>
-        <br>Question 1: <input type="text" name="q1"><br>
-        <br>Correct Answer: <input type="text" name="a1"><br>
+        <input type="radio" onclick="addTrueFalse()" name="question" value="trueFalse"> True/False<br>
+        <input type="radio" onclick="addAnswers(0)" name="question" value="fillIn"> Fill In The Blank<br><br>
+        Question 1: <input type="text" name="q1"><br><br>
+        <div id="correctAnswer"></div>
         <div id="wrongAnswers"></div>
         <script>
           addAnswers(3);
