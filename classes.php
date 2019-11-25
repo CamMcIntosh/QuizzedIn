@@ -12,37 +12,24 @@
   }
 
   class Question {
+    public $category;
+    public $type;
     public $question;
-    public $rightAnswer;
-    public $userAnswer;
+    public $correct_answer;
+    public $user_answer;
+    public $incorrect_answers;
 
-    function __construct ($q, $ra) {
+    function __construct ($c, $t, $q, $ca, $ia) {
+      $this->category = $c;
+      $this->type = $t;
       $this->question = $q;
-      $this->rightAnswer = $ra;
+      $this->correct_answer = $ca;
+      $this->incorrect_answers = $ia;
     }
 
     function gradeQuestion () {
-      return $userAnswer == $rightAnswer;
+      return $user_answer == $correct_answer;
     }
-  }
-
-  // The correct answer will always be the first in the array of possible answers
-  class MCQuestion extends Question {
-    public $possibleAnswers;
-
-    function __construct ($ques, $posAns) {
-      $this->question = $ques;
-      $this->possibleAnswers = $posAns;
-      $this->rightAnswer = $posAns[0];
-    }
-  }
-
-  class TFQuestion extends Question {
-
-  }
-
-  class FIBQuestion extends Question {
-
   }
 
   class QuizAttempt {
@@ -68,7 +55,7 @@
           array_push($this->questionsMissed, $qs[$i]);
         }
       }
-      $this->score = $correct/$total;
+      $this->score = ($correct/$total)*100;
       return $this->score;
     }
 
