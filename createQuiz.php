@@ -44,7 +44,7 @@
           </div>
     <main>
     <script id="answerTemplate" type="text/html"></script>
-    <form action="./index.php">
+    <form action="./addQuestion.php">
         Name your Quiz:<br>
         <input type="text" name="name"><br>
         Choose a Category: <br>

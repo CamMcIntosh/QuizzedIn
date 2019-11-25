@@ -10,6 +10,7 @@
   <body>
       <header>
           <?php printNavBar(); ?>
+      </header>
           <div class="main">
             <div class="form-popup" id="signUpForm">
               <form action="./connect.php" method="post" class="form-container">
@@ -110,7 +111,7 @@
 
     <script src="search.js"></script>
       <!--JavaScript for Search-->
-      
+
     <script type="text/javascript">
         function showDiv(){
             if (document.getElementById(toggle).style.display=="none") {
