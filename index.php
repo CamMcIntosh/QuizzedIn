@@ -59,6 +59,7 @@
             save them on the web, and share them with your friends.</p>
             <p>Various topics are already available. Get started!!!</p>
           </h4>
+          <div id="topics"></div>
 
       </div>
       <div class="sub-nav">
@@ -109,6 +110,7 @@
 
     <script src="search.js"></script>
       <!--JavaScript for Search-->
+      
     <script type="text/javascript">
         function showDiv(){
             if (document.getElementById(toggle).style.display=="none") {

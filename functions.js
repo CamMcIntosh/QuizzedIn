@@ -1,4 +1,4 @@
-/* General  functions for HTML */
+/*------ General  functions for HTML ------*/
 function removeAllChildren (nodeID) {
   var myNode = document.getElementById(nodeID);
   while (myNode.firstChild) {
@@ -66,6 +66,7 @@ function addTrueFalse () {
 
 
 /*------ Functions for categories.php page ------*/
+// Loading this script tag and a <div> with id="topics" will load the categories entries <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 $(document).ready(function() {
     $.ajax({
         type: "get",
