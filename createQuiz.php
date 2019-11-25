@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?php require './templates.php'; ?>
 <html>
 <head>
     <meta charset="utf-8">
@@ -7,6 +6,7 @@
     <title>QuizzedIn</title>
     <link href="./styling.css" rel="stylesheet" />
     <script src="functions.js"></script>
+    <?php require './templates.php'; ?>
   </head>
   <body>
       <header>
@@ -44,7 +44,7 @@
           </div>
     <main>
     <script id="answerTemplate" type="text/html"></script>
-    <form action="./addQuestion.php">
+    <form action="./addQuestion.php" method="post">
         Name your Quiz:<br>
         <input type="text" name="name"><br>
         Choose a Category: <br>
