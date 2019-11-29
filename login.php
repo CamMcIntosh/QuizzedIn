@@ -12,7 +12,7 @@
             // mysqli_connect() function opens a new connection to the MySQL server.
             $conn = mysqli_connect("localhost", "id11205838_db", "database", "id11205838_quizzedin");
             // SQL query to fetch information of registerd users and finds user match.
-            $query = "SELECT email, password from users where email=? AND password=? LIMIT 1";
+            $query = "SELECT email, password from users where email=$email AND password=$password LIMIT 1";
             // To protect MySQL injection for Security purpose
             $stmt = $conn->prepare($query);
             $stmt->bind_param("ss", $email, $password);
