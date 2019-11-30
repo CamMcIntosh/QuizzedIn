@@ -1,4 +1,15 @@
 <?php
+// For printing stuff in <head>
+function printHeaderTags($title) {
+	echo <<<endOfTags
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>$title</title>
+	<link href="./styling.css" rel="stylesheet" />
+endOfTags;
+}
+
+// For printing the nav bar in the top of <body>
 function printNavBar () {
   echo <<<endOfNav
   <header>
@@ -38,6 +49,7 @@ function printNavBar () {
 endOfNav;
 }
 
+// For printing functions to go with nav bar (either in <main> or right after nav bar)
 function printSignInSignUpForms () {
   echo <<<endOfForm
 	<div class="form-popup" id="signUpForm">
@@ -115,4 +127,4 @@ function printAddQuestionForm() {
 endOfForm;
 }
 
- ?>
+?>

@@ -8,11 +8,11 @@
 <html>
 
 <head>
-    <title>Your Home Page</title>
-    <link href="./styling.css" rel="stylesheet" type="text/css">
+    <?php printHeaderTags("Your Home Page"); ?>
 </head>
 
 <body>
+	<?php printNavBar(); printSignInSignOutForms(); ?>
     <div id="profile">
     <b id="welcome">Welcome : <i><?php echo $login_session; ?></i></b>
     <b id="logout"><a href="./logout.php">Log Out</a></b>

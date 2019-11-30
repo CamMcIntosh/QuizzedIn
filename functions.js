@@ -66,7 +66,7 @@ function addTrueFalse () {
 
 
 /*------ Functions for categories.php page ------*/
-// Loading this script tag and a <div> with id="topics" will load the categories entries <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+// Loading this script tag "<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>" and a <div> with id="topics" will load the categories entries
 $(document).ready(function() {
     $.ajax({
         type: "get",

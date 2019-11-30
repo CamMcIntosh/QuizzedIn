@@ -2,10 +2,7 @@
 <?php require './templates.php'; ?>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>QuizzedIn</title>
-	<link href="styling.css" rel="stylesheet" type="text/css" />
+	<?php printHeaderTags("QuizzedIn"); ?>
 </head>
 <body>
 <?php printNavBar(); ?>
