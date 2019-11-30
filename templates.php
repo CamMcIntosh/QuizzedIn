@@ -34,26 +34,30 @@ function printNavBar () {
           </div>
         </div>
       </div>
-	</header>
-	<div class="main">
-            <div class="form-popup" id="signUpForm">
+    </header>
+endOfNav;
+}
+
+function printSignInSignUpForms () {
+  echo <<<endOfForm
+	<div class="form-popup" id="signUpForm">
               <form action="./connect.php" method="post" class="form-container">
                 <h1>Sign Up</h1>
 
                 <label for="name"><b>Name</b></label>
-                <input type="text" placeholder="Enter Name" name="name" required>
+                <input type="text" placeholder="Enter Name" name="email" required>
 
                 <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username" required>
+                <input type="text" placeholder="Enter Username" name="email" required>
 
                 <label for="email"><b>Email</b></label>
                 <input type="text" placeholder="Enter Email" name="email" required>
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
+                <input type="password" placeholder="Enter Password" name="psw" required>
 
             	<label for="pswcf"><b>Password Confirm</b></label>
-                <input type="password" placeholder="Confirm Password" name="password_conf" required>
+                <input type="password" placeholder="Confirm Password" name="pswcf" required>
 
                 <button type="submit" class="btn" href="/">Sign Up</button>
                 <button type="button" class="btn cancel" onclick="closeSignUpForm()">Close</button>
@@ -61,7 +65,7 @@ function printNavBar () {
             </div>
 
             <div class="form-popup" id="signInForm" >
-              <form action="./signIn.php" method="post" class="form-container">
+              <form action="/signIn.php" method="post" class="form-container">
                 <h1>Sign In</h1>
 
                 <label for="email"><b>Email</b></label>
@@ -74,7 +78,24 @@ function printNavBar () {
                 <button type="button" class="btn cancel" onclick="closeSignInForm()">Close</button>
               </form>
             </div>
-endOfNav;
+            <script>
+            	function openSignInForm() {
+	  				document.getElementById("signInForm").style.display = "block";
+					closeSignUpForm();
+				}
+				function closeSignInForm() {
+					document.getElementById("signInForm").style.display = "none";
+				}
+				function openSignUpForm() {
+					document.getElementById("signUpForm").style.display = "block";
+					closeSignInForm();
+				}
+				function closeSignUpForm() {
+					document.getElementById("signUpForm").style.display = "none";
+				}
+            </script>
+            
+endOfForm;
 }
 
 function printAddQuestionForm() {

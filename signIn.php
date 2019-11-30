@@ -47,6 +47,7 @@
               </div>
             </div>
           </div>
+        </header>
 
         <h2>Sign In</h2>
         <form method="POST" action="">
