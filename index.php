@@ -8,48 +8,8 @@
     <link href="styling.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-      <header>
-          <?php printNavBar(); ?>
-      </header>
-          <div class="main">
-            <div class="form-popup" id="signUpForm">
-              <form action="./connect.php" method="post" class="form-container">
-                <h1>Sign Up</h1>
-
-                <label for="name"><b>Name</b></label>
-                <input type="text" placeholder="Enter Name" name="email" required>
-
-                <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="email" required>
-
-                <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-
-            	<label for="pswcf"><b>Password Confirm</b></label>
-                <input type="password" placeholder="Confirm Password" name="pswcf" required>
-
-                <button type="submit" class="btn" href="/">Sign Up</button>
-                <button type="button" class="btn cancel" onclick="closeSignUpForm()">Close</button>
-              </form>
-            </div>
-
-            <div class="form-popup" id="signInForm" >
-              <form action="/action_page.php" method="post" class="form-container">
-                <h1>Sign In</h1>
-
-                <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-
-                <button type="submit" class="btn"><a class="signInSubmit" href="./temp_signedIn.php" style="text-decoration:none">Sign In</a></button>
-                <button type="button" class="btn cancel" onclick="closeSignInForm()">Close</button>
-              </form>
-            </div>
+      <?php printNavBar(); ?>
+          
       <div class="title">
         Welcome to QuizzedIn
       </div>

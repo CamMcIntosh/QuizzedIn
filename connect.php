@@ -29,6 +29,7 @@ if (!empty($name)) {
                     values ('$name', '$username', '$email', '$password')";
 
                     if ($connect->query($sql)) {
+                        header("location: ./index.php"); // Redirecting To Profile Page
                         echo "You have sucessfully signed up!";
                     }
                     else { 
