@@ -54,7 +54,7 @@
         <input type="email" name="email"><br>
         Password:<br>
         <input type="password" name="password"><br>
-        <input type="submit" value="Sign In">
+        <input type="submit" name="submit" value="Sign In">
         <span><?php echo $error; ?></span>
     </form>
 
