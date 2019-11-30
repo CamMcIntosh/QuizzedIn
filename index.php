@@ -37,7 +37,7 @@
             </div>
 
             <div class="form-popup" id="signInForm" >
-              <form action="/action_page.php" method="post" class="form-container">
+              <form action="/signIn.php" method="post" class="form-container">
                 <h1>Sign In</h1>
 
                 <label for="email"><b>Email</b></label>
