@@ -44,7 +44,7 @@ function addUserToDB () {
 		die('Connect Error ('. mysqli_connect_errno() .') '. mysqli_connect_error());
 	} else {
 		//Inserts the User's Info into the 'users' table in the database
-		$sql = "INSERT INTO users (name, username, email, password) values ('$user[\"name\"]', '$user[\"username\"]', '$user[\"email\"]', '$user[\"password\"]')";
+		$sql = "INSERT INTO users (name, username, email, password) values ('".$user["name"]."', '".$user["username"]."', '".$user["email"]."', '".$user["password"]."')";
     	if ($conn->query($sql)) {
 			header("location: ./index.php"); // Redirecting To Profile Page
 			echo "You have sucessfully signed up!";

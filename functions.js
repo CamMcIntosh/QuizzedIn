@@ -7,7 +7,6 @@ function removeAllChildren (nodeID) {
 }
 
 /*------ Functions for create.php page ------*/
-
 // Changes correctAnswer and wrongAnswers divs in create.php for FIB and mult. choice questions
 function addAnswers (n) {
   // Removing all child elements and adding the correct answer input
@@ -16,6 +15,7 @@ function addAnswers (n) {
   div.innerHTML = "Correct Answer: ";
   var input = document.createElement("input");
   input.setAttribute("type", "text"); input.setAttribute("name", "a1");
+  input.required = true;
   div.appendChild(input);
   document.getElementById("correctAnswer").appendChild(div);
 
@@ -27,6 +27,7 @@ function addAnswers (n) {
     var answerInput = document.createElement("input");
     answerNumText.innerHTML = "Wrong Answer "+i+": ";
     answerInput.setAttribute("name", "a"+(i+1)); answerInput.setAttribute("type", "text");
+    if (i == 1) { answerInput.required = true; }
     div.appendChild(answerNumText); div.appendChild(answerInput);
     document.getElementById("wrongAnswers").appendChild(div);
   }
@@ -43,9 +44,8 @@ function addTrueFalse () {
   div.innerHTML = "Answer: ";
   // Adding True radio button
   var input1 = document.createElement("input");
-  input1.setAttribute("type", "radio");
-  input1.setAttribute("name", "a1");
-  input1.setAttribute("value", "true");
+  input1.setAttribute("type", "radio"); input1.setAttribute("name", "a1"); input1.setAttribute("value", "true");
+  input1.required = true;
   div.appendChild(input1);
   var span1 = document.createElement("span")
   span1.innerHTML = "True  "

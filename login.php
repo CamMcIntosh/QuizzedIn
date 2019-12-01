@@ -4,13 +4,12 @@
     if (isset($_POST['submit'])) {
         if (empty($_POST['email']) || empty($_POST['password'])) {
             $error = "Email and/or Password is invalid";
-        }
-        else {
+        } else {
             // Define $username and $password
             $email = $_POST['email'];
             $password = $_POST['password'];
             // mysqli_connect() function opens a new connection to the MySQL server.
-            $conn = mysqli_connect("localhost", "id11205838_db", "database", "id11205838_quizzedin");
+            $conn = new mysqli("localhost", "id11205838_db", "database", "id11205838_quizzedin");
             // SQL query to fetch information of registerd users and finds user match.
             $query = "SELECT email, password from users where email=? AND password=? LIMIT 1";
             // To protect MySQL injection for Security purpose
@@ -25,7 +24,7 @@
                 $_SESSION['login_user'] = $email; // Initializing Session
                 header("location: profile.php"); // Redirecting To Profile Page
             }
-            mysqli_close($conn); // Closing Connection
+            $conn->close(); // Closing Connection
         }
     }
 ?>
