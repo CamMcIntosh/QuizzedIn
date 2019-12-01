@@ -1,14 +1,27 @@
 <?php
 
-  class Quiz {
-    public $qID;
-    public $questions;
+	class Quiz {
+		public $qID;
+		public $title
+		public $questions;
+		public $attempts;
 
-    function __construct ($qs, $as) {
-      $this->questions = $qs;
-      $this->attempts = $as;
+	function __construct ($qid, $t) {
+    	$this->qID = $qid;
+    	$this->title = $t;
     }
-
+    
+    function addAttempt ($a) {
+    	array_push($this->attempts, $a);
+    }
+    
+    function addQuestion ($q) {
+    	array_push($this->questions, $q);
+    }
+    
+    function removeQuestion ($q) {
+    	// IMPLEMENT THIS FUNCTION
+    }
   }
 
   class Question {
@@ -33,14 +46,12 @@
   }
 
   class QuizAttempt {
-    public $quiz;
     public $score;
     public $questionsMissed;
     public $startTime;
     public $endTime;
 
-    function __construct ($quiz) {
-      $this->quiz = $quiz;
+    function __construct () {
       $this->startTime = date(DATE_ATOM); //ISO 8601 date-time
     }
 
