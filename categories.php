@@ -10,9 +10,9 @@
 		<?php printNavBar(); ?>
 		<main>
 			<?php printSignInSignUpForms(); ?>
-			<h1>
+			<div class="title">
 				Categories 
-			</h1>
+			</div>
 			<ul style="list-style-type: none;">
 				<div id="topics">
 				</div>
