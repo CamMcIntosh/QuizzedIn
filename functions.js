@@ -62,12 +62,13 @@ function addTrueFalse () {
   // Adding hidden true
   var input3 = document.createElement("input");
   input3.setAttribute("type", "radio"); input3.setAttribute("name", "a2"); input3.setAttribute("value", "true"); input3.setAttribute("id", "t2");
-  input3.required = true; input3.checked = true;
+  input3.required = true; 
   input3.style.visibility = "hidden";
   div.appendChild(input3);
   // Adding hidden false
   var input4 = document.createElement("input");
   input4.setAttribute("type", "radio"); input4.setAttribute("name", "a2"); input4.setAttribute("value", "false"); input4.setAttribute("id", "f2");
+  input4.checked = true;
   input4.style.visibility = "hidden";
   div.appendChild(input4);
 
