@@ -45,16 +45,14 @@ function addTrueFalse () {
   // Adding True radio button
   var input1 = document.createElement("input");
   input1.setAttribute("type", "radio"); input1.setAttribute("name", "a1"); input1.setAttribute("value", "true");
-  input1.required = true;
+  input1.required = true; input1.checked = true;
   div.appendChild(input1);
   var span1 = document.createElement("span")
   span1.innerHTML = "True  "
   div.appendChild(span1);
   // Adding False
   var input2 = document.createElement("input");
-  input2.setAttribute("type", "radio");
-  input2.setAttribute("name", "a1");
-  input2.setAttribute("value", "false");
+  input2.setAttribute("type", "radio"); input2.setAttribute("name", "a1"); input2.setAttribute("value", "false");
   input2.innerHTML = "False";
   div.appendChild(input2);
   var span2 = document.createElement("span")

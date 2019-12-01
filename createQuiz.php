@@ -9,11 +9,12 @@
 	<body>
 		<?php printNavBar(); ?>
 		<main>
+			<br><br><br><br>
 			<?php printSignInSignUpForms(); ?>
 			<script id="answerTemplate" type="text/html">
 			</script>
 			<form action="./addQuestion.php" method="post">
-				Name your Quiz:<br> <input type="text" name="name" required><br>
+				Name your Quiz:<br> <input type="text" name="title" required><br>
 				Choose a Category:<br><input type="text" name="category" required><br><br><br> 
 				<!-- Printing the from from the templates.php file -->
 				<?php printAddQuestionForm(); ?><br>

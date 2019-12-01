@@ -2,13 +2,22 @@
 
 	class Quiz {
 		public $qID;
-		public $title
+		public $title;
 		public $questions;
 		public $attempts;
 
-	function __construct ($qid, $t) {
-    	$this->qID = $qid;
+	function __construct ($t) {
+		$this->qID = "";
     	$this->title = $t;
+    	$this->questions = [];
+    	$this->attempts = [];
+    }
+    
+    public static function fromSESSION ($sesVar) {
+    	$instance = new self($sesVar['title']);
+    	$instance->qID = $sesVar['qID'];
+    	$instance->questions = $sesVar['questions'];
+    	$instance->attempts = $sesVar['attempts'];
     }
     
     function addAttempt ($a) {
