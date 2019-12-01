@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<?php require './templates.php'; require './functions.php'; ?>
+<?php 
+    session_start(); 
+	require './templates.php'; 
+	require './functions.php'; 
+?>
 <html>
 	<head>
 		<?php printHeaderTags("Add a Question"); ?>

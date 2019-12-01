@@ -10,6 +10,10 @@ function connectToDB() {
 	return new mysqli ($db["host"], $db["username"], $db["password"], $db["name"]);
 }
 
+function disconnectFromDB ($conn) {
+	$conn->close();
+}
+
 function test_input ($data) {
 	$data = trim($data);
 	$data = stripslashes($data);
