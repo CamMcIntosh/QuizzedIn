@@ -113,9 +113,9 @@ endOfForm;
 function printAddQuestionForm() {
   echo <<<endOfForm
     Question Type:<br>
-    <input type="radio" onclick="addAnswers(3)" name="question" value="multiple" checked> Multiple Choice<br>
-    <input type="radio" onclick="addTrueFalse()" name="question" value="trueFalse"> True/False<br>
-    <input type="radio" onclick="addAnswers(0)" name="question" value="fillIn"> Fill In The Blank<br><br>
+    <input type="radio" onclick="addAnswers(3)" name="type" value="mc" checked> Multiple Choice<br>
+    <input type="radio" onclick="addTrueFalse()" name="type" value="tf"> True/False<br>
+    <input type="radio" onclick="addAnswers(0)" name="type" value="fb"> Fill In The Blank<br><br>
     Question 1: <input type="text" name="q1" required><br><br>
     <div id="correctAnswer"></div>
     <div id="wrongAnswers"></div>

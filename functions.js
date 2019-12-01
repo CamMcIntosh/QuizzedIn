@@ -44,20 +44,32 @@ function addTrueFalse () {
   div.innerHTML = "Answer: ";
   // Adding True radio button
   var input1 = document.createElement("input");
-  input1.setAttribute("type", "radio"); input1.setAttribute("name", "a1"); input1.setAttribute("value", "true");
+  input1.setAttribute("type", "radio"); input1.setAttribute("name", "a1"); input1.setAttribute("value", "true"); input1.setAttribute("id", "t1");
   input1.required = true; input1.checked = true;
+  input1.onclick = function() { document.getElementById("f2").checked = true; };
   div.appendChild(input1);
   var span1 = document.createElement("span")
   span1.innerHTML = "True  "
   div.appendChild(span1);
   // Adding False
   var input2 = document.createElement("input");
-  input2.setAttribute("type", "radio"); input2.setAttribute("name", "a1"); input2.setAttribute("value", "false");
-  input2.innerHTML = "False";
+  input2.setAttribute("type", "radio"); input2.setAttribute("name", "a1"); input2.setAttribute("value", "false"); input2.setAttribute("id", "f1");
+  input2.onclick = function() { document.getElementById("t2").checked = true; };
   div.appendChild(input2);
   var span2 = document.createElement("span")
   span2.innerHTML = "False"
   div.appendChild(span2);
+  // Adding hidden true
+  var input3 = document.createElement("input");
+  input3.setAttribute("type", "radio"); input3.setAttribute("name", "a2"); input3.setAttribute("value", "true"); input3.setAttribute("id", "t2");
+  input3.required = true; input3.checked = true;
+  input3.style.visibility = "hidden";
+  div.appendChild(input3);
+  // Adding hidden false
+  var input4 = document.createElement("input");
+  input4.setAttribute("type", "radio"); input4.setAttribute("name", "a2"); input4.setAttribute("value", "false"); input4.setAttribute("id", "f2");
+  input4.style.visibility = "hidden";
+  div.appendChild(input4);
 
   document.getElementById("correctAnswer").appendChild(div);
 }

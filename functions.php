@@ -57,5 +57,48 @@ function addUserToDB () {
     	}
     	$conn->close(); //close connection
 	}
-}         
+}   
+
+/*-------------------- Quiz/Question Funtions --------------------*/
+function addQuizToDB($conn, $quiz) {
+	$query = "INSERT INTO quizzes (title) VALUES ('".$quiz->title."')";
+	if ($conn->query($query)) {
+		$query = "SELECT id FROM quizzes WHERE title=? ORDER BY id DESC LIMIT 1";
+		$stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $quiz->title);
+		$stmt->execute();
+		$stmt->store_result();
+		$stmt->bind_result($id);
+		$stmt->fetch();
+		return $id;
+	} else {
+		die("Died in addQuizToDB");
+	}
+}
+
+function addQuestionToDB($conn, $question) {
+	$query = "INSERT INTO questions (category, type, question, correct_answer, wrong_answer_1, wrong_answer_2, wrong_answer_3) VALUES ('".$question->category."', '".$question->type."', '".$question->qText."', '".$question->rghtAns."', '".$question->wrngAns[0]."', '".(isset($question->wrngAns[1]) ? $question->wrngAns[1] : NULL)."', '".(isset($question->wrngAns[2]) ? $question->wrngAns[2] : NULL)."')";
+	if ($conn->query($query)) {
+		$query = "SELECT id FROM questions WHERE question=? AND wrong_answer_1=?";
+		$stmt = $conn->prepare($query);
+        $stmt->bind_param("ss", $question->qText, $question->wrngAns[0]);
+		$stmt->execute();
+		$stmt->store_result();
+		$stmt->bind_result($id);
+		$stmt->fetch();
+		return $id;
+	} else {
+		die("Died in addQuestionToDB");
+	}
+}
+
+function addQuizQToDB ($conn, $quiz, $question) {
+	$query = "INSERT INTO quiz_questions (quizID, questionID) VALUES ('".$quiz->id."', '".$question->id."')";
+	if (!$conn->query($query)) {
+		die("Died in addQuizQToDB");
+	}
+}
+
+
+$temp = "SELECT qz.id, qs.* FROM questions qs INNER JOIN quiz_questions qq ON qs.id = qq.questionID INNER JOIN quizzes qz ON qz.id = qq.quizID WHERE qz.id = 1;";
 ?>

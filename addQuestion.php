@@ -11,29 +11,52 @@
 	</head>
 	<body>
 		<?php printNavBar(); ?>
-		<?php
-    		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	    		$conn = connectToDB();
-    			if (!isset($_SESSION['quiz'])) {
-    				$quiz = new Quiz(testInput($_POST['title']));
-					$query = "INSERT INTO quizzes (title) VALUES ('".$quiz->title."')";
-					if ($conn->query($query)) {
-						$query = "SELECT id FROM quizzes WHERE title=?";
-						$stmt = $conn->prepare($query);
-        			    $stmt->bind_param("s", $quiz->title);
-			            $stmt->execute();
-			            $stmt->store_result();
-			            $stmt->bind_result($id);
-			            $stmt->fetch();
-			            $quiz->qID = $id;
-					}
-					$_SESSION["quiz"] = $quiz;
-    			} else {
+		<main>
+			<br><br><br><br>
+			<?php
+				// Finishing pringting UI
+				printSignInSignUpForms();
+				
+				// Storing POST vars
+    			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    				echo var_dump($_POST);
+    				// Connecting to database and creating a quiz if one isn't in SESSION
+	    			$conn = connectToDB();
+	    			if (!isset($_SESSION['quiz'])) {
+    					$quiz = new Quiz(testInput($_POST['title']));
+						$quiz->id = addQuizToDB($conn, $quiz);
+						$_SESSION["quiz"] = $quiz;
+	    			}
+	    			
+	    			// Getting quiz from session and creating a question object to add to database
     				$quiz = $_SESSION['quiz'];
-    			}
-    			disconnectFromDB($conn);
-    			echo "<br><br><br><br>".print_r($quiz, true);
-   			}
-   		?>
+    				$category = testInput($_POST['category']);
+    				$type = testInput($_POST['type']);
+    				$qText = testInput($_POST['q1']);
+	    			$rghtAns = testInput($_POST['a1']);
+    				$wrngAns = [];
+    				for ($i = 2; $i <= 4; $i++) {
+    					if (!empty($_POST["a".$i])) {
+    						array_push($wrngAns, testInput($_POST["a".$i]));
+    					}
+    				}
+	    			$question = new Question($category, $type, $qText, $rghtAns, $wrngAns);
+    				$question->id = addQuestionToDB($conn, $question);
+    				
+    				// Adding question to quiz and storing in database
+    				addQuizQToDB($conn, $quiz, $question);
+    				array_push($quiz->questions, $question);
+    				$_SESSION["quiz"] = $quiz;
+
+					// Disconnecting 
+					disconnectFromDB($conn);
+				}
+   			?>
+   			<form action="./addQuestion.php" method="post">
+				<!-- Printing the from from the templates.php file -->
+				<?php printAddQuestionForm(); ?><br>
+				<input type="submit" value="Next Question"> 
+			</form>
+   		</main>
 	</body>
 </html>

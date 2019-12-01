@@ -1,23 +1,16 @@
 <?php
 
 	class Quiz {
-		public $qID;
+		public $id;
 		public $title;
 		public $questions;
 		public $attempts;
 
 	function __construct ($t) {
-		$this->qID = "";
+		$this->id = "";
     	$this->title = $t;
     	$this->questions = [];
     	$this->attempts = [];
-    }
-    
-    public static function fromSESSION ($sesVar) {
-    	$instance = new self($sesVar['title']);
-    	$instance->qID = $sesVar['qID'];
-    	$instance->questions = $sesVar['questions'];
-    	$instance->attempts = $sesVar['attempts'];
     }
     
     function addAttempt ($a) {
@@ -34,29 +27,31 @@
   }
 
   class Question {
+	public $id;
     public $category;
     public $type;
-    public $question;
-    public $correct_answer;
-    public $user_answer;
-    public $incorrect_answers;
+    public $qText;
+    public $rghtAns;
+    public $userAns;
+    public $wrngAns;
 
-    function __construct ($c, $t, $q, $ca, $ia) {
+    function __construct ($c, $t, $q, $ra, $wa) {
       $this->category = $c;
       $this->type = $t;
-      $this->question = $q;
-      $this->correct_answer = $ca;
-      $this->incorrect_answers = $ia;
+      $this->qText = $q;
+      $this->rghtAns = $ra;
+      $this->wrngAns = $wa;
     }
 
     function gradeQuestion () {
-      return $user_answer == $correct_answer;
+      return $userAns == $rghtAns;
     }
   }
 
   class QuizAttempt {
+  	public $quiz;
     public $score;
-    public $questionsMissed;
+    public $qsMissed;
     public $startTime;
     public $endTime;
 
@@ -68,11 +63,11 @@
       $qs = $this->quiz->questions;
       $total = count($qs);
       $correct = 0;
-      for ($i = 0; $i < total; $i++) {
+      for ($i = 0; $i < $total; $i++) {
         if ($qs[$i]->gradeQuestion()) {
           $correct++;
         } else {
-          array_push($this->questionsMissed, $qs[$i]);
+          array_push($this->qsMissed, $qs[$i]);
         }
       }
       $this->score = ($correct/$total)*100;
