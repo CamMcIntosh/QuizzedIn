@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 <?php require './templates.php'; ?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<?php printHeaderTags("QuizzedIn"); ?>
@@ -85,7 +85,7 @@
 		</div>
 		<script src="search.js">
 		</script>
-<!--JavaScript for Search-->
+			<!--JavaScript for Search-->
 		<script type="text/javascript">
 			function showDiv(){
 			    if (document.getElementById(toggle).style.display=="none") {

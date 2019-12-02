@@ -1,16 +1,17 @@
 <?php 
+	// Required files
 	require './templates.php'; 
 	require './functions.php';
-	require 'classes.php';
+	require 'classes.php'; // This MUST come before the session_start() call so that the objects will be serialized correctly
     session_start(); 
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<?php printHeaderTags("Add a Question"); ?>
+		<?php printHeaderTags("Add a Question"); // Printing header from function ?>
 	</head>
 	<body>
-		<?php printNavBar(); ?>
+		<?php printNavBar(); // Printing nav bar from function?>
 		<main>
 			<br><br><br><br>
 			<?php
@@ -53,8 +54,7 @@
 				}
    			?>
    			<form action="./addQuestion.php" method="post">
-				<!-- Printing the from from the templates.php file -->
-				<?php printAddQuestionForm(); ?><br>
+				<?php printAddQuestionForm(); // Printing form from function ?><br>
 				<input type="submit" value="Next Question"> 
 			</form>
    		</main>

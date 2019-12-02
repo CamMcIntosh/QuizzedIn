@@ -1,16 +1,18 @@
+<!-- I don't think this page is used. Still need to check -->
+
 <?php
-    include('login.php'); // Includes Login Script
-    if(isset($_SESSION['login_user'])) {
+    require 'login.php'; // Includes Login Script
+    if (isset($_SESSION['login_user'])) {
         header("location: profile.php"); // Redirecting To Profile Page
     }
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-<?php printHeaderTags("Sign In"); ?>
+		<?php printHeaderTags("Sign In"); ?>
 	</head>
 	<body>
-<?php printNavBar(); printSignInSignOutForms(); ?>
+		<?php printNavBar(); printSignInSignOutForms(); ?>
 		<h2>
 			Sign In 
 		</h2>

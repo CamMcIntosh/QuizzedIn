@@ -1,10 +1,12 @@
+<!-- This page should never be used -->
+
 <!DOCTYPE html>
 <html>
 	<head>
-<?php printHeaderTags("QuizzedIn"); ?>
+		<?php printHeaderTags("QuizzedIn"); ?>
 	</head>
 	<body>
-<?php printNavBar(); printSignInSignUp(); ?>
+		<?php printNavBar(); printSignInSignUp(); ?>
 		<h2>
 			Sign Up
 		</h2>

@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 <?php require './templates.php'; ?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<?php printHeaderTags("Create a Quiz"); ?>
-		<script src="functions.js">
-		</script>
+		<script src="functions.js"></script>
 	</head>
 	<body>
 		<?php printNavBar(); ?>

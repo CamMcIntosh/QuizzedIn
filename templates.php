@@ -110,6 +110,7 @@ function printSignInSignUpForms () {
 endOfForm;
 }
 
+// For printing the form in addQuestion and createQuiz pages
 function printAddQuestionForm() {
   echo <<<endOfForm
     Question Type:<br>

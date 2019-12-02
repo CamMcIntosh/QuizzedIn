@@ -1,19 +1,23 @@
 <?php
 /*-------------------- SQL Funtions --------------- -----*/
-// For sanitizing SQL queries
+
+// Database info stored here so it only needs to be changed in one place
 function getDBInfo () {
 	return array("host"=>"localhost", "username"=>"id11205838_db", "password"=>"database", "name"=>"id11205838_quizzedin");
 }
 
+// Creates connection to database
 function connectToDB() {
 	$db = getDBInfo();
 	return new mysqli ($db["host"], $db["username"], $db["password"], $db["name"]);
 }
 
+// Disconnects from database
 function disconnectFromDB ($conn) {
 	$conn->close();
 }
 
+// Sanitizes input for SQL queries
 function testInput ($data) {
 	$data = trim($data);
 	$data = stripslashes($data);
@@ -22,8 +26,11 @@ function testInput ($data) {
 }
 
 /*-------------------- Login/Signup Funtions --------------------*/
+
+/*------ This func should replace connect.php ------*/
+// Adds a user to the database
 function addUserToDB () {
-	//Sign Up info stored in variables
+	// Sign Up info stored in variables
 	$user = array("name"=>filter_input(INPUT_POST,'name'),
 		"username"=>filter_input(INPUT_POST, 'username'), 
 		"email"=>filter_input(INPUT_POST, 'email'),
@@ -31,6 +38,7 @@ function addUserToDB () {
 	$flag = false;
 	$errorString = "Empty field(s): ";
 	
+	// Checking for empty strings and flagging if found
 	foreach ($user as $key => $val) {
 		if (empty($val)) {
 			$flag = true;
@@ -38,28 +46,32 @@ function addUserToDB () {
 		}
 	}
 	if ($flag) { die($errorString); }
-	unset($val); //Doing this cause the internet said to
+	unset($val); // Doing this cause the internet said to
 
-	//Create connection
+	// Create connection
 	$conn = connectToDB();
 
-	//If there is an error connecting to the database
+	// If there is an error connecting to the database
 	if (mysqli_connect_error()) {
 		die('Connect Error ('. mysqli_connect_errno() .') '. mysqli_connect_error());
 	} else {
-		//Inserts the User's Info into the 'users' table in the database
+		// Inserts the User's Info into the 'users' table in the database
 		$sql = "INSERT INTO users (name, username, email, password) values ('".$user["name"]."', '".$user["username"]."', '".$user["email"]."', '".$user["password"]."')";
     	if ($conn->query($sql)) {
 			header("location: ./index.php"); // Redirecting To Profile Page
 			echo "You have sucessfully signed up!";
 	    } else { 
-    		echo "Error: ". $sql ."\n". $conn->error;
+    		echo "Error: ".$sql."\n".$conn->error;
     	}
-    	$conn->close(); //close connection
+    	
+    	// Close connection
+    	disconnectFromDB($conn);
 	}
 }   
 
 /*-------------------- Quiz/Question Funtions --------------------*/
+
+//  Adds a quiz object to the database and returns the ID
 function addQuizToDB($conn, $quiz) {
 	$query = "INSERT INTO quizzes (title) VALUES ('".$quiz->title."')";
 	if ($conn->query($query)) {
@@ -76,6 +88,7 @@ function addQuizToDB($conn, $quiz) {
 	}
 }
 
+// Adds a question object to the database and returns the ID
 function addQuestionToDB($conn, $question) {
 	$query = "INSERT INTO questions (category, type, question, correct_answer, wrong_answer_1, wrong_answer_2, wrong_answer_3) VALUES ('".$question->category."', '".$question->type."', '".$question->qText."', '".$question->rghtAns."', '".$question->wrngAns[0]."', '".(isset($question->wrngAns[1]) ? $question->wrngAns[1] : NULL)."', '".(isset($question->wrngAns[2]) ? $question->wrngAns[2] : NULL)."')";
 	if ($conn->query($query)) {
@@ -85,13 +98,15 @@ function addQuestionToDB($conn, $question) {
 		$stmt->execute();
 		$stmt->store_result();
 		$stmt->bind_result($id);
-		$stmt->fetch();
+		$stmt->fetch(); // Populates the params in bind_result()
 		return $id;
 	} else {
 		die("Died in addQuestionToDB");
 	}
 }
 
+// Adds the quiz/question pair to the database
+// This is the equivalent to pushing the question onto the quiz's question array in our database
 function addQuizQToDB ($conn, $quiz, $question) {
 	$query = "INSERT INTO quiz_questions (quizID, questionID) VALUES ('".$quiz->id."', '".$question->id."')";
 	if (!$conn->query($query)) {
@@ -99,6 +114,6 @@ function addQuizQToDB ($conn, $quiz, $question) {
 	}
 }
 
-
+// This is here cause I need it. Don't delete it unless it's in a function somewhere
 $temp = "SELECT qz.id, qs.* FROM questions qs INNER JOIN quiz_questions qq ON qs.id = qq.questionID INNER JOIN quizzes qz ON qz.id = qq.quizID WHERE qz.id = 1;";
 ?>

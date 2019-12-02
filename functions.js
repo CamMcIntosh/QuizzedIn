@@ -77,6 +77,7 @@ function addTrueFalse () {
 
 
 /*------ Functions for categories.php page ------*/
+/*------ The goal is to get rid of this now that everything is in our database ------*/
 // Loading this script tag "<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>" and a <div> with id="topics" will load the categories entries
 $(document).ready(function() {
     $.ajax({
