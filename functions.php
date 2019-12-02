@@ -152,7 +152,7 @@ function printCategories () {
 	// Connecting to database
 	$conn = connectToDB();
 	$query = "SELECT category FROM categories";
-	if ($stmt = $conn->prepare($query) {
+	if ($stmt = $conn->prepare($query)) {
 		$stmt->execute();
 		$stmt->bind_result($cat);
 		while ($stmt->fetch()) {
