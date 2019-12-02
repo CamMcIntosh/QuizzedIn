@@ -74,33 +74,3 @@ function addTrueFalse () {
 
   document.getElementById("correctAnswer").appendChild(div);
 }
-
-
-/*------ Functions for categories.php page ------*/
-/*------ The goal is to get rid of this now that everything is in our database ------*/
-// Loading this script tag "<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>" and a <div> with id="topics" will load the categories entries
-$(document).ready(function() {
-    $.ajax({
-        type: "get",
-        url: "https://opentdb.com/api_category.php",
-        beforeSend: function() {
-            $("#topics").html("Loading...");
-        },
-        timeout: 10000,
-        error: function(xhr, status, error) {
-            alert("Error: " + xhr.status + " - " + error);
-        },
-        dataType: "json",
-        success: function(data) {
-            $("#topics").html("");
-            $.each(data, function() {
-                $.each(this, function(key, value) {
-                    var cat = value.name.toLowerCase().replace(/: /g, "-").replace(/&/g, "and").replace(/ /g, "_");
-                    $("#topics").append(
-                        "<a href='./quizzes.php?category="+cat+"'>"+value.name+"</a><br>"
-                    );
-                });
-            });
-        }
-    });
-});
