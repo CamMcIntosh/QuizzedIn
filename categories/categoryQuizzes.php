@@ -1,11 +1,16 @@
-<?php require './templates.php'; ?>
+<?php require '../templates.php'; ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<?php printHeaderTags("Categories"); ?>
+		<?php 
+			if (isset($_GET['category'])) {
+				$cat = $_GET['category'];
+				printHeaderTags("Categories");
+			} else {
+				header("Location: ./categories.php");
+			}			
+		?>
 		<!-- This line calls to the API to get the categories -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="functions.js"></script>
 	</head>
 	<body>
 		<?php printNavBar(); ?>
