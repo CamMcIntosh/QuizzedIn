@@ -144,4 +144,23 @@ function addQuizQToDB ($conn, $quiz, $question) {
 // This is here cause I need it. Don't delete it unless it's in a function somewhere
 $removeAllTestDataFromDB = "DELETE from quizzes where id > 24; alter table quizzes AUTO_INCREMENT = 25; delete from questions where id > 2641; alter table questions AUTO_INCREMENT = 2641; delete from quiz_questions where questionID > 2641;";
 $getQuizQuestions = "SELECT qz.id, qs.* FROM questions qs INNER JOIN quiz_questions qq ON qs.id = qq.questionID INNER JOIN quizzes qz ON qz.id = qq.quizID WHERE qz.id = 1;";
+
+/*-------------------- SQL Funtions --------------------*/
+
+// Prints the categories into the categories.php page
+function printCategories () {
+	// Connecting to database
+	$conn = connectToDB();
+	$query = "SELECT category FROM categories";
+	if ($stmt = $conn->prepare($query) {
+		$stmt->execute();
+		$stmt->bind_result($cat);
+		while ($stmt->fetch()) {
+			echo "<a href='./quizzes.php?category=".htmlspecialchars($cat)."'>".$cat."</a><br>";
+		}
+		$stmt->close();
+	}
+	disconnectFromDB($conn);
+}
+
 ?>

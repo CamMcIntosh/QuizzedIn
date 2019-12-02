@@ -97,7 +97,7 @@ $(document).ready(function() {
                 $.each(this, function(key, value) {
                     var cat = value.name.toLowerCase().replace(/: /g, "-").replace(/&/g, "and").replace(/ /g, "_");
                     $("#topics").append(
-                        "<a href='./quizzes.php?category='"+cat+"'>"+value.name+"</a><br>"
+                        "<a href='./quizzes.php?category="+cat+"'>"+value.name+"</a><br>"
                     );
                 });
             });

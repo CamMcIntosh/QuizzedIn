@@ -3,10 +3,10 @@
 <html>
 	<head>
 		<?php 
-			$cat
+			$cat;
 			if (isset($_GET['category'])) {
-				$cat = $_GET['category'];
-				printHeaderTags("{$cat} Quizzes");
+				$cat = htmlspecialchars_decode($_GET['category']);
+				printHeaderTags($cat." Quizzes");
 			} else {
 				header("Location: ./categories.php");
 			}			
