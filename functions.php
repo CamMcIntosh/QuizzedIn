@@ -1,5 +1,13 @@
 <?php
-/*-------------------- SQL Funtions --------------- -----*/
+/*-------------------- Debugging Funtions --------------------*/
+// Does a var_dump but formatted all purdy-like
+function vardump($var) {
+	echo "<pre>";
+	var_dump($var);
+	echo "<pre>";
+}
+
+/*-------------------- SQL Funtions --------------------*/
 
 // Database info stored here so it only needs to be changed in one place
 function getDBInfo () {
@@ -71,9 +79,26 @@ function addUserToDB () {
 
 /*-------------------- Quiz/Question Funtions --------------------*/
 
+// Takes vars passed in from $_POST and $_SESSION and turns them into objects
+function parseQuizQuestion ($quiz, $cat, $postInfo) {
+	$type = testInput($postInfo['type']);
+    $qText = testInput($postInfo['q1']);
+	$rghtAns = testInput($postInfo['a1']);
+    $wrngAns = [];
+    for ($i = 2; $i <= 4; $i++) {
+    	if (!empty($postInfo["a".$i])) {
+    		array_push($wrngAns, testInput($postInfo["a".$i]));
+    	}
+    }
+	$question = new Question($cat, $type, $qText, $rghtAns, $wrngAns);
+    array_push($quiz->questions, $question);
+   
+	return $quiz;
+}
+
 //  Adds a quiz object to the database and returns the ID
-function addQuizToDB($conn, $quiz) {
-	$query = "INSERT INTO quizzes (title) VALUES ('".$quiz->title."')";
+function addQuizToDB($conn, $quiz, $user) {
+	$query = "INSERT INTO quizzes (title, creator) VALUES ('".$quiz->title."', '".$user."')";
 	if ($conn->query($query)) {
 		$query = "SELECT id FROM quizzes WHERE title=? ORDER BY id DESC LIMIT 1";
 		$stmt = $conn->prepare($query);
@@ -90,11 +115,11 @@ function addQuizToDB($conn, $quiz) {
 
 // Adds a question object to the database and returns the ID
 function addQuestionToDB($conn, $question) {
-	$query = "INSERT INTO questions (category, type, question, correct_answer, wrong_answer_1, wrong_answer_2, wrong_answer_3) VALUES ('".$question->category."', '".$question->type."', '".$question->qText."', '".$question->rghtAns."', '".$question->wrngAns[0]."', '".(isset($question->wrngAns[1]) ? $question->wrngAns[1] : NULL)."', '".(isset($question->wrngAns[2]) ? $question->wrngAns[2] : NULL)."')";
+	$query = "INSERT INTO questions (category, type, question, correct_answer, wrong_answer_1, wrong_answer_2, wrong_answer_3) VALUES ('".$question->category."', '".$question->type."', '".$question->qText."', '".$question->rghtAns."', '".(isset($question->wrngAns[0]) ? $question->wrngAns[0] : NULL)."', '".(isset($question->wrngAns[1]) ? $question->wrngAns[1] : NULL)."', '".(isset($question->wrngAns[2]) ? $question->wrngAns[2] : NULL)."')";
 	if ($conn->query($query)) {
-		$query = "SELECT id FROM questions WHERE question=? AND wrong_answer_1=?";
+		$query = "SELECT id FROM questions WHERE question=? ORDER BY id DESC LIMIT 1";
 		$stmt = $conn->prepare($query);
-        $stmt->bind_param("ss", $question->qText, $question->wrngAns[0]);
+        $stmt->bind_param("s", $question->qText);
 		$stmt->execute();
 		$stmt->store_result();
 		$stmt->bind_result($id);
@@ -111,9 +136,12 @@ function addQuizQToDB ($conn, $quiz, $question) {
 	$query = "INSERT INTO quiz_questions (quizID, questionID) VALUES ('".$quiz->id."', '".$question->id."')";
 	if (!$conn->query($query)) {
 		die("Died in addQuizQToDB");
+	} else {
+		return true;
 	}
 }
 
 // This is here cause I need it. Don't delete it unless it's in a function somewhere
-$temp = "SELECT qz.id, qs.* FROM questions qs INNER JOIN quiz_questions qq ON qs.id = qq.questionID INNER JOIN quizzes qz ON qz.id = qq.quizID WHERE qz.id = 1;";
+$removeAllTestDataFromDB = "DELETE from quizzes where id > 24; alter table quizzes AUTO_INCREMENT = 25; delete from questions where id > 2641; alter table questions AUTO_INCREMENT = 2641; delete from quiz_questions where questionID > 2641;";
+$getQuizQuestions = "SELECT qz.id, qs.* FROM questions qs INNER JOIN quiz_questions qq ON qs.id = qq.questionID INNER JOIN quizzes qz ON qz.id = qq.quizID WHERE qz.id = 1;";
 ?>

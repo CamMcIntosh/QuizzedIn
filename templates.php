@@ -110,9 +110,15 @@ function printSignInSignUpForms () {
 endOfForm;
 }
 
+// Just adds spacing so it stays consistent
+function printSpacing() {
+	echo "<br><br><br><br>";
+}
+
 // For printing the form in addQuestion and createQuiz pages
 function printAddQuestionForm() {
   echo <<<endOfForm
+  	<script src="functions.js"></script>
     Question Type:<br>
     <input type="radio" onclick="addAnswers(3)" name="type" value="mc" checked> Multiple Choice<br>
     <input type="radio" onclick="addTrueFalse()" name="type" value="tf"> True/False<br>

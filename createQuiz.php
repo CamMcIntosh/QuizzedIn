@@ -3,12 +3,11 @@
 <html>
 	<head>
 		<?php printHeaderTags("Create a Quiz"); ?>
-		<script src="functions.js"></script>
 	</head>
 	<body>
 		<?php printNavBar(); ?>
 		<main>
-			<br><br><br><br>
+			<?php printSpacing(); ?>
 			<?php printSignInSignUpForms(); ?>
 			<form action="./addQuestion.php" method="post">
 				Name your Quiz:<br> <input type="text" name="title" required><br>
