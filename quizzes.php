@@ -1,29 +1,24 @@
-<?php require '../templates.php'; ?>
+<?php require './templates.php'; ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<?php 
+			$cat
 			if (isset($_GET['category'])) {
 				$cat = $_GET['category'];
-				printHeaderTags("Categories");
+				printHeaderTags("{$cat} Quizzes");
 			} else {
 				header("Location: ./categories.php");
 			}			
 		?>
-		<!-- This line calls to the API to get the categories -->
 	</head>
 	<body>
 		<?php printNavBar(); ?>
 		<main>
 			<?php printSignInSignUpForms(); printSpacing(); ?>
 			<div class="title">
-				Categories 
+				<?php echo $cat; ?> 
 			</div>
-			<ul style="list-style-type: none;">
-				<div id="topics">
-				</div>
-				<!-- Categories automatically uploaded via API -->
-			</ul>
 		</main>
 	</body>
 </html>
