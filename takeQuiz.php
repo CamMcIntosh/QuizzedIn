@@ -22,7 +22,7 @@
 			<div class="title">
 				<?php echo $quiz->title; ?>
 			</div>
-			<form>
+			<form method="post" action="./gradeQuiz.php">
 				<?php 
 					printQuizForm($quiz);
 				?>

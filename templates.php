@@ -19,7 +19,7 @@ function printNavBar () {
       </div>
       <div class="nav-left-items">
         <div class="nav-item">
-          <a class="nav-item-link" href="./categories.php" style="text-decoration:none"><span>Category</span></a>
+          <a class="nav-item-link" href="./categories.php" style="text-decoration:none"><span>Categories</span></a>
         </div>
           <div class="nav-item">
             <a class="nav-item-link" href="/" style="text-decoration:none" onclick="showDiv()">
@@ -159,7 +159,7 @@ function printQuizForm ($quiz) {
 			for ($j = 0; $j < count($answers); $j++) {
 				// Only checking and requiring the first radio button
 				if ($j == 0) { 
-					echo "<input type='radio' name='q$i' value='{$answers[$j]}' checked required> {$answers[$j]} <br>"; 
+					echo "<input type='radio' name='q$i' value='{$answers[$j]}' required> {$answers[$j]} <br>"; 
 				} else { 
 					echo "<input type='radio' name='q$i' value='{$answers[$j]}'> {$answers[$j]} <br>"; 
 				}
