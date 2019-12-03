@@ -6,13 +6,9 @@
 <html>
 	<head>
 		<?php 
-			$quiz;
-			if (isset($_GET['qid'])) {
-				$quiz = getQuiz(htmlspecialchars_decode($_GET['qid']));
-				printHeaderTags($quiz->title);
-			} else {
-				header("Location: ./categories.php");
-			}			
+			if (isset($_POST)) {
+				vardump($_POST);
+			}		
 		?>
 	</head>
 	<body>
@@ -22,7 +18,7 @@
 			<div class="title">
 				<?php echo $quiz->title; ?>
 			</div>
-			<form method="post" action="./scoreQuiz.php">
+			<form method="post" action="./gradeQuiz.php">
 				<?php 
 					printQuizForm($quiz);
 				?>
