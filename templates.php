@@ -132,4 +132,30 @@ function printAddQuestionForm() {
 endOfForm;
 }
 
+// For printing the quiz form on the takeQuiz page
+function printQuizForm ($quiz) {
+	// Looping through all questions in quiz
+	foreach ($i = 0; $i <count($quiz->questions); $i++) {
+		$q = $quiz->questions[$i];
+		$answers = array($q->rghtAns);
+		// Adding all the right and wrong answers into the same array
+		foreach ($q-wrngAns as $ans) {
+			array_push($answers, $ans);
+		}
+		$answers = shuffle($answers);
+		echo "<br>";
+		echo "<b>Question {$i+1}:</b> {$q->qTezxt} <br>";
+		
+		// If it's a fill in the blank, there needs to be a text input, otherwise radio buttons 
+		if ($q->type == "fb") {
+			echo "<input type='text' name='q{$i}' required>";
+		} else {
+			foreach ($answers as $ans) {
+				echo "<input type='radio' name='q$i' value='{$ans}' checked required> {$ans} <br>";
+	    	}
+    	}
+	}
+	echo "<br><input type='submit' value='Check your answers'>";
+}
+
 ?>
