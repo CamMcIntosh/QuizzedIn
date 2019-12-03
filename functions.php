@@ -1,4 +1,6 @@
 <?php
+require './classes.php';
+
 /*-------------------- Debugging Funtions --------------------*/
 // Does a var_dump but formatted all purdy-like
 function vardump($var) {
@@ -143,7 +145,6 @@ function addQuizQToDB ($conn, $quiz, $question) {
 
 // This is here cause I need it. Don't delete it unless it's in a function somewhere
 $removeAllTestDataFromDB = "DELETE from quizzes where id > 24; alter table quizzes AUTO_INCREMENT = 25; delete from questions where id > 2641; alter table questions AUTO_INCREMENT = 2641; delete from quiz_questions where questionID > 2641;";
-$getQuizQuestions = "SELECT qz.id, qs.* FROM questions qs INNER JOIN quiz_questions qq ON qs.id = qq.questionID INNER JOIN quizzes qz ON qz.id = qq.quizID WHERE qz.id = 1;";
 
 /*-------------------- Quiz Categories Funtions --------------------*/
 
@@ -189,8 +190,55 @@ function getCategoryQuizzes ($cat) {
 }
 
 // Gets a quiz from the database given a particular ID
-function getQuiz () {
+function getQuiz ($id) {
+	$conn = connectToDB();
+	$query = "SELECT title FROM quizzes WHERE id = ".$id;
+	$quiz;
+	if ($stmt = $conn->prepare($query)) {
+		$stmt->execute();
+		$stmt->bind_result($title);
+		if ($stmt->fetch()) {
+			$quiz = new Quiz($title);
+			$quiz->id = $id;
+		}
+		$stmt->close();
+	} else {
+		die("died in getCategoryQuizzes()");
+	}
+	disconnectFromDB($conn);
+	
+	// Populating quiz questions
+	$quiz->questions = getQuizQuestions($quiz->id);
+	
+	return $quiz;
+}
 
+// Gets all questions for a particular quiz
+function getQuizQuestions ($id) {
+	$conn = connectToDB();
+	$query = "SELECT qs.* FROM questions qs INNER JOIN quiz_questions qq ON qs.id = qq.questionID INNER JOIN quizzes qz ON qz.id = qq.quizID WHERE qz.id = ".$id;
+	$questions = [];
+	if ($stmt = $conn->prepare($query)) {
+		$stmt->execute();
+		$stmt->bind_result($id, $cat, $type, $q, $ra, $wa1, $wa2, $wa3);
+		$i = 0;
+		while ($stmt->fetch()) {
+			$arr = [];
+			//echo $i++; vardump($ra); vardump($wa1); vardump($wa2); vardump($wa3);
+			if ($wa1 != "") { array_push($arr, $wa1); }
+			if ($wa2 != "") { array_push($arr, $wa2); }
+			if ($wa3 != "") { array_push($arr, $wa3); }
+			$question = new Question($cat, $type, $q, $ra, $arr);
+			$question->id = $id;
+			array_push($questions, $question);
+		}
+		$stmt->close();
+	} else {
+		die("died in getQuizQuestions()");
+	}
+	disconnectFromDB($conn);
+	
+	return $questions;
 }
 
 ?>
