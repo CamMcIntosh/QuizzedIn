@@ -1,4 +1,7 @@
-<?php require './templates.php'; ?>
+<?php 
+	require './templates.php'; 
+	require './functions.php';
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,8 +20,19 @@
 		<main>
 			<?php printSignInSignUpForms(); printSpacing(); ?>
 			<div class="title">
-				<?php echo $cat; ?> 
+				<?php echo $cat; ?>
 			</div>
+			<ul style="list-style-type: none;">
+				<div id="quizzes">
+					<?php 
+						$quizzes = getCategoryQuizzes(htmlspecialchars_decode($cat));
+						foreach ($quizzes as $id => $title) {
+							echo "<a href='./takeQuiz.php?qid=".$id."'>".$title."</a><br>";
+						}
+					?>
+				</div>
+			</ul>
+			
 		</main>
 	</body>
 </html>

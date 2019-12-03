@@ -15,7 +15,7 @@
 				Categories 
 			</div>
 			<ul style="list-style-type: none;">
-				<div id="topics">
+				<div id="categories">
 					<?php printCategories(); ?>
 				</div>
 			</ul>

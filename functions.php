@@ -145,7 +145,7 @@ function addQuizQToDB ($conn, $quiz, $question) {
 $removeAllTestDataFromDB = "DELETE from quizzes where id > 24; alter table quizzes AUTO_INCREMENT = 25; delete from questions where id > 2641; alter table questions AUTO_INCREMENT = 2641; delete from quiz_questions where questionID > 2641;";
 $getQuizQuestions = "SELECT qz.id, qs.* FROM questions qs INNER JOIN quiz_questions qq ON qs.id = qq.questionID INNER JOIN quizzes qz ON qz.id = qq.quizID WHERE qz.id = 1;";
 
-/*-------------------- SQL Funtions --------------------*/
+/*-------------------- Quiz Categories Funtions --------------------*/
 
 // Prints the categories into the categories.php page
 function printCategories () {
@@ -159,8 +159,33 @@ function printCategories () {
 			echo "<a href='./quizzes.php?category=".htmlspecialchars($cat)."'>".$cat."</a><br>";
 		}
 		$stmt->close();
+	} else {
+		die("died in printCategories()");
 	}
 	disconnectFromDB($conn);
+}
+
+/*-------------------- Quizzes Funtions --------------------*/
+
+// Gets all quizzes with a certain category and returns them as an associative array
+function getCategoryQuizzes ($cat) {
+	// Connecting to DB
+	$conn = connectToDB();
+	$query = "SELECT id, title FROM quizzes WHERE title LIKE '%".$cat."%'";
+	$quizzes = [];
+	if ($stmt = $conn->prepare($query)) {
+		$stmt->execute();
+		$stmt->bind_result($id, $title);
+		while ($stmt->fetch()) {
+			$quizzes[$id] = $title;
+		}
+		$stmt->close();
+	} else {
+		die("died in getCategoryQuizzes()");
+	}
+	disconnectFromDB($conn);
+	
+	return $quizzes;
 }
 
 ?>
