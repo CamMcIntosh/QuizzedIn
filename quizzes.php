@@ -25,7 +25,7 @@
 			<ul style="list-style-type: none;">
 				<div id="quizzes">
 					<?php 
-						$quizzes = getCategoryQuizzes(htmlspecialchars_decode($cat));
+						$quizzes = getCategoryQuizzes($cat);
 						foreach ($quizzes as $id => $title) {
 							echo "<a href='./takeQuiz.php?qid=".$id."'>".$title."</a><br>";
 						}

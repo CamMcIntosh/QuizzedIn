@@ -188,4 +188,9 @@ function getCategoryQuizzes ($cat) {
 	return $quizzes;
 }
 
+// Gets a quiz from the database given a particular ID
+function getQuiz () {
+
+}
+
 ?>
