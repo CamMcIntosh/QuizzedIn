@@ -207,8 +207,9 @@ function getQuiz ($id) {
 	}
 	disconnectFromDB($conn);
 	
-	// Populating quiz questions
+	// Populating quiz questions and shuffling them
 	$quiz->questions = getQuizQuestions($quiz->id);
+	shuffle($quiz->questions);
 	
 	return $quiz;
 }
