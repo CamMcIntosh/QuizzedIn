@@ -1,6 +1,6 @@
 <?php 
-	require './templates.php'; 
-	require './functions.php';
+	require_once './templates.php'; 
+	require_once './functions.php';
 ?>
 <!DOCTYPE html>
 <html>

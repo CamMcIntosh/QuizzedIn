@@ -14,14 +14,6 @@ class Quiz {
     	$this->attempts = [];
     }
     
-    function addAttempt ($a) {
-    	array_push($this->attempts, $a);
-    }
-    
-    function addQuestion ($q) {
-    	array_push($this->questions, $q);
-    }
-    
     function removeQuestion ($q) {
     	// IMPLEMENT THIS FUNCTION
     }
@@ -46,20 +38,24 @@ class Question {
     }
 
     function gradeQuestion () {
-    	return $userAns == $rghtAns;
+    	return strtolower($this->userAns) == strtolower($this->rghtAns);
     }
 }
 
 // Class for holding quiz attempt objects
 class QuizAttempt {
+	public $id;
   	public $quiz;
+  	public $user;
+  	public $correct;
     public $score;
     public $qsMissed;
     public $startTime;
     public $endTime;
 
-    function __construct () {
-    	$this->startTime = date(DATE_ATOM); //ISO 8601 date-time
+    function __construct ($q, $st) {
+    	$this->quiz = $q;
+    	$this->startTime = $st; //ISO 8601 date-time
     }
 
 	// Grades quiz by checking if each question is correct and storing the score
@@ -67,21 +63,17 @@ class QuizAttempt {
     	$qs = $this->quiz->questions;
     	$total = count($qs);
     	$correct = 0;
+    	$this->qsMissed = [];
       	for ($i = 0; $i < $total; $i++) {
         	if ($qs[$i]->gradeQuestion()) {
-        	$correct++;
+        		$correct++;
         	} else {
         		array_push($this->qsMissed, $qs[$i]);
     		}
     	}
+    	$this->correct = $correct;
     	$this->score = ($correct/$total)*100;
-    	return $this->score;
-    }
-
-	// Grades quiz and logs end time
-    function finishAttempt () {
     	$this->endTime = date(DATE_ATOM);
-    	return gradeQuiz();
     }
 }
 

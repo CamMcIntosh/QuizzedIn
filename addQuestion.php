@@ -1,8 +1,8 @@
 <?php 
 	// Required files
-	require './templates.php'; 
-	require './functions.php';
-	require 'classes.php'; // This MUST come before the session_start() call so that the objects will be serialized correctly
+	require_once './templates.php'; 
+	require_once './functions.php';
+	require_once 'classes.php'; // This MUST come before the session_start() call so that the objects will be serialized correctly
     session_start(); 
 ?>
 <!DOCTYPE html>

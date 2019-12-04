@@ -1,6 +1,8 @@
 <?php 
-	require './templates.php'; 
-	require './functions.php';
+	require_once './templates.php'; 
+	require_once './functions.php';
+	require_once './classes.php';
+	session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,6 +26,8 @@
 			</div>
 			<form method="post" action="./scoreQuiz.php">
 				<?php 
+					$_SESSION['currentQuiz'] = $quiz;
+					$_SESSION['startTime'] = date(DATE_ATOM);
 					printQuizForm($quiz);
 				?>
 			</form>

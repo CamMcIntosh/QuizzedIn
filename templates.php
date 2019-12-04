@@ -148,7 +148,7 @@ function printQuizForm ($quiz) {
 		
 		// If it's a fill in the blank, there needs to be a text input, otherwise radio buttons 
 		if ($q->type == "fb") {
-			echo "<input type='text' name='q{$i}' required>";
+			echo "Fill in the blank: <input type='text' name='q{$i}' required>";
 		} else {
 			// When you get tf questions out of the DB, they're all caps. This fixes that
 			if ($q->type == "tf") {
@@ -157,16 +157,21 @@ function printQuizForm ($quiz) {
 				}
 			}
 			for ($j = 0; $j < count($answers); $j++) {
-				// Only checking and requiring the first radio button
-				if ($j == 0) { 
-					echo "<input type='radio' name='q$i' value='{$answers[$j]}' required> {$answers[$j]} <br>"; 
-				} else { 
-					echo "<input type='radio' name='q$i' value='{$answers[$j]}'> {$answers[$j]} <br>"; 
-				}
+				echo "<input type='radio' name='q$i' id='$i$j' value='{$answers[$j]}' required> <label for='$i$j'>{$answers[$j]}</label> <br>"; 
 			}
     	}
 	}
 	echo "<br><input type='submit' value='Check your answers'>";
+}
+
+// For printing user and correct answers in scoreQuiz page
+function printCorrectAnswer ($q, $i) {
+	//echo "<br>";
+	echo ($q->gradeQuestion() ? "<p style='color:green'>" : "<p style='color:red'>");
+	echo "<b>Question ".($i+1).":</b> {$q->qText} <br>";
+	echo "<b>Your Answer:</b> {$q->userAns} <br>";
+	echo "<b>Correct Answer:</b> {$q->rghtAns} <br>";
+	echo "</p>";
 }
 
 ?>

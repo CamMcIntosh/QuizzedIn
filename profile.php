@@ -1,7 +1,7 @@
 <?php
 	// Requiring needed php files
-	require './templates.php';
-    require './session.php';
+	require_once './templates.php';
+    require_once './session.php';
     if (!isset($_SESSION['login_user'])){
         header("location: index.php"); // Redirecting To Home Page
 	}

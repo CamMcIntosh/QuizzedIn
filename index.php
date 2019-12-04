@@ -1,4 +1,4 @@
-<?php require './templates.php'; ?>
+<?php require_once './templates.php'; ?>
 <!DOCTYPE html>
 <html>
 	<head>

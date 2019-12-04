@@ -1,5 +1,5 @@
 <?php
-require './classes.php';
+require_once './classes.php';
 
 /*-------------------- Debugging Funtions --------------------*/
 // Does a var_dump but formatted all purdy-like
@@ -79,7 +79,7 @@ function addUserToDB () {
 	}
 }   
 
-/*-------------------- Quiz/Question Funtions --------------------*/
+/*-------------------- Add Quiz/Questions Funtions --------------------*/
 
 // Takes vars passed in from $_POST and $_SESSION and turns them into objects
 function parseQuizQuestion ($quiz, $cat, $postInfo) {
@@ -99,8 +99,8 @@ function parseQuizQuestion ($quiz, $cat, $postInfo) {
 }
 
 //  Adds a quiz object to the database and returns the ID
-function addQuizToDB($conn, $quiz, $user) {
-	$query = "INSERT INTO quizzes (title, creator) VALUES ('".$quiz->title."', '".$user."')";
+function addQuizToDB($conn, $quiz, $cat, $user) {
+	$query = "INSERT INTO quizzes (title, category, creator) VALUES ('".$quiz->title."', '".$cat."', '".$user."')";
 	if ($conn->query($query)) {
 		$query = "SELECT id FROM quizzes WHERE title=? ORDER BY id DESC LIMIT 1";
 		$stmt = $conn->prepare($query);
@@ -166,13 +166,13 @@ function printCategories () {
 	disconnectFromDB($conn);
 }
 
-/*-------------------- Quizzes Funtions --------------------*/
+/*-------------------- Take Quiz/Questions Funtions --------------------*/
 
 // Gets all quizzes with a certain category and returns them as an associative array
 function getCategoryQuizzes ($cat) {
 	// Connecting to DB
 	$conn = connectToDB();
-	$query = "SELECT id, title FROM quizzes WHERE title LIKE '%".$cat."%'";
+	$query = "SELECT id, title FROM quizzes WHERE category LIKE '%".$cat."%'";
 	$quizzes = [];
 	if ($stmt = $conn->prepare($query)) {
 		$stmt->execute();
@@ -240,6 +240,10 @@ function getQuizQuestions ($id) {
 	disconnectFromDB($conn);
 	
 	return $questions;
+}
+
+function addAttemptToDB ($attempt) {
+	echo "<p>addAttemptToDB function has not yet been implemented</p>";
 }
 
 ?>
