@@ -37,12 +37,10 @@
 					<div class="sub-nav-item-detail">
 						Study for yourself with quizzes and share with others. 
 					</div>
-					<button class="sub-nav-item-button">
-						<a class="sub-item-link" href="./signUp.php" style="text-decoration:none">
+					<button class="sub-nav-item-button" onclick="openSignUpForm()">
 							<span>
 								Sign Up
 							</span>
-						</a>
 					</button>
 				</div>
 				<div class="sub-nav-item">
