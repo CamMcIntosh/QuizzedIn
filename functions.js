@@ -79,7 +79,7 @@ function updatehref (id, max) {
 	var button = document.getElementById(id);
 	var max = document.getElementById("max").value;
 	var href = button.name;
-	var url = new URL(href, "https://quizzedin.000webhostapp.com");
+	var url = new URL(href, "https://quizzedin.000webhostapp.com"); //Change this if we ever move the site
 	var params = new URLSearchParams(url.search.slice(1));
     params.append("max", max);
     url.search = params.toString();
