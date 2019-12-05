@@ -10,7 +10,7 @@
 		<?php 
 			$quiz;
 			if (isset($_GET['qid'])) {
-				$quiz = getQuiz(htmlspecialchars_decode($_GET['qid']));
+				$quiz = getQuiz(htmlspecialchars_decode($_GET['qid']), htmlspecialchars_decode($_GET['max']));
 				printHeaderTags($quiz->title);
 			} else {
 				header("Location: ./categories.php");

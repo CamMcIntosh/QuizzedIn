@@ -12,8 +12,9 @@
 				printHeaderTags($cat." Quizzes");
 			} else {
 				header("Location: ./categories.php");
-			}			
+			}	
 		?>
+		<script src="functions.js"></script>
 	</head>
 	<body>
 		<?php printNavBar(); ?>
@@ -22,12 +23,21 @@
 			<div class="title">
 				<?php echo $cat; ?>
 			</div>
+			<select id="max">
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="25">25</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+			</select>
 			<ul style="list-style-type: none;">
 				<div id="quizzes">
 					<?php 
 						$quizzes = getCategoryQuizzes($cat);
+						$i = 0;
 						foreach ($quizzes as $id => $title) {
-							echo "<a href='./takeQuiz.php?qid=".$id."'>".$title."</a><br>";
+							echo "<button type='button' name='./takeQuiz.php?qid=".$id."' id='q".$i."' onclick='updatehref(\"q".$i."\")'>".$title."</button><br>";
+							$i++;
 						}
 					?>
 				</div>

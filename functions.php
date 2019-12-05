@@ -190,7 +190,7 @@ function getCategoryQuizzes ($cat) {
 }
 
 // Gets a quiz from the database given a particular ID
-function getQuiz ($id) {
+function getQuiz ($id, $max) {
 	$conn = connectToDB();
 	$query = "SELECT title FROM quizzes WHERE id = ".$id;
 	$quiz;
@@ -208,16 +208,16 @@ function getQuiz ($id) {
 	disconnectFromDB($conn);
 	
 	// Populating quiz questions and shuffling them
-	$quiz->questions = getQuizQuestions($quiz->id);
+	$quiz->questions = getQuizQuestions($quiz->id, $max);
 	shuffle($quiz->questions);
 	
 	return $quiz;
 }
 
 // Gets all questions for a particular quiz
-function getQuizQuestions ($id) {
+function getQuizQuestions ($id, $max) {
 	$conn = connectToDB();
-	$query = "SELECT qs.* FROM questions qs INNER JOIN quiz_questions qq ON qs.id = qq.questionID INNER JOIN quizzes qz ON qz.id = qq.quizID WHERE qz.id = ".$id;
+	$query = "SELECT qs.* FROM questions qs INNER JOIN quiz_questions qq ON qs.id = qq.questionID INNER JOIN quizzes qz ON qz.id = qq.quizID WHERE qz.id = ".$id." LIMIT ".$max;
 	$questions = [];
 	if ($stmt = $conn->prepare($query)) {
 		$stmt->execute();
