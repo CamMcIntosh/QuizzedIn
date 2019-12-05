@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	// Requiring needed php files
 	require_once './templates.php';
     require_once './session.php';
