@@ -18,11 +18,14 @@
 			<br><br><br><br> 
 			<b id="welcome">
 				Welcome : 
-				<i><?php echo $login_session; //This won't be set by session.php becuase the var will scope out. ?></i>
-			</b>
+				<i><?php echo $email;//$login_session; //This won't be set by session.php becuase the var will scope out. ?></i>
+			</b> <br><br>
 			<b id="logout">
 				<a href="./logout.php">Log Out</a>
 			</b>
+			<h3>Past Quizzes</h3>
+			<br>
+			<h3>Created Quizzes</h3>
 		</div>
 	</body>
 </html>

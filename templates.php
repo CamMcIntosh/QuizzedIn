@@ -53,7 +53,7 @@ endOfNav;
 function printSignInSignUpForms () {
   echo <<<endOfForm
 	<div class="form-popup" id="signUpForm">
-              <form action="./connect.php" method="post" class="form-container">
+              <form action="./profile.php" method="post" class="form-container">
                 <h1>Sign Up</h1>
 
                 <label for="name"><b>Name</b></label>
@@ -77,7 +77,7 @@ function printSignInSignUpForms () {
             </div>
 
             <div class="form-popup" id="signInForm" >
-              <form action="/signIn.php" method="post" class="form-container">
+              <form action="/profile.php" method="post" class="form-container">
                 <h1>Sign In</h1>
 
                 <label for="email"><b>Email</b></label>
@@ -86,7 +86,7 @@ function printSignInSignUpForms () {
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required>
 
-                <button type="submit" class="btn"><a class="signInSubmit" href="./temp_signedIn.php" style="text-decoration:none">Sign In</a></button>
+                <button type="submit" class="btn"><a class="signInSubmit" href="/" style="text-decoration:none">Sign In</a></button>
                 <button type="button" class="btn cancel" onclick="closeSignInForm()">Close</button>
               </form>
             </div>
