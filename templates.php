@@ -157,7 +157,7 @@ function printQuizForm ($quiz) {
 				}
 			}
 			for ($j = 0; $j < count($answers); $j++) {
-				echo "<input type='radio' name='q$i' id='$i$j' value='{$answers[$j]}' required> <label for='$i$j'>{$answers[$j]}</label> <br>"; 
+				echo "<input type='radio' name='q$i' id='$i$j' value='{$answers[$j]}'> <label for='$i$j'>{$answers[$j]}</label> <br>"; 
 			}
     	}
 	}
