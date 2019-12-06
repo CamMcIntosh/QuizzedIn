@@ -251,9 +251,9 @@ function loginUser(){
     // mysqli_connect() function opens a new connection to the MySQL server.
     $conn = mysqli_connect("localhost", "id11205838_db", "database", "id11205838_quizzedin");
     // Storing Session
-    $user_check = $_SESSION['login_user'];
+    $user_check = $_POST["email"];
     // SQL Query To Fetch Complete Information Of User
-    $query = "SELECT username from users where username = '".$user_check."'";
+    $query = "SELECT email from users where email = '".$user_check."'";
     $ses_sql = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($ses_sql);
 	$login_session = $row['username']; 

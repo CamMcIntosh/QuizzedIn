@@ -18,7 +18,6 @@
 		<?php printNavBar(); printSignInSignUpForms(); ?>
 		<div id="profile">
 			<br><br><br><br> 
-			<?php var_dump($_POST); ?>
 			<b id="welcome">
 				Welcome : 
 				<i><?php echo $login;//$login_session; //This won't be set by session.php becuase the var will scope out. ?></i>
