@@ -246,4 +246,18 @@ function addAttemptToDB ($attempt) {
 	echo "<p>addAttemptToDB function has not yet been implemented</p>";
 }
 
+function loginUser(){
+	//session_start(); // Starting Session
+    // mysqli_connect() function opens a new connection to the MySQL server.
+    $conn = mysqli_connect("localhost", "id11205838_db", "database", "id11205838_quizzedin");
+    // Storing Session
+    $user_check = $_SESSION['login_user'];
+    // SQL Query To Fetch Complete Information Of User
+    $query = "SELECT username from users where username = '".$user_check."'";
+    $ses_sql = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($ses_sql);
+	$login_session = $row['username']; 
+	return $login_session;
+}
+
 ?>

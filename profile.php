@@ -2,7 +2,8 @@
 	session_start();
 	// Requiring needed php files
 	require_once './templates.php';
-    require_once './session.php';
+	require_once './functions.php';
+	$login = loginUser();
     if (!isset($_SESSION['login_user'])){
         header("location: index.php"); // Redirecting To Home Page
 	}
@@ -19,7 +20,7 @@
 			<br><br><br><br> 
 			<b id="welcome">
 				Welcome : 
-				<i><?php echo $email;//$login_session; //This won't be set by session.php becuase the var will scope out. ?></i>
+				<i><?php echo $login;//$login_session; //This won't be set by session.php becuase the var will scope out. ?></i>
 			</b> <br><br>
 			<b id="logout">
 				<a href="./logout.php">Log Out</a>
